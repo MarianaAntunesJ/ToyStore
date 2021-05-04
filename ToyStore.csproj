@@ -56,9 +56,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\ClientViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ToyViewModel.cs" />
     <Compile Include="ViewModel\WorkerViewModel.cs" />
     <Compile Include="View\ClientView.cs" />
+    <Compile Include="View\LoginView.cs" />
     <Compile Include="View\MenuView.cs" />
     <Compile Include="View\PrincipalView.cs" />
     <Compile Include="View\ToyView.cs" />
