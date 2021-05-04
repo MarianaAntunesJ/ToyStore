@@ -55,14 +55,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\PurchaseModel.cs" />
     <Compile Include="ViewModel\ClientViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\PurchaseViewModel.cs" />
     <Compile Include="ViewModel\ToyViewModel.cs" />
     <Compile Include="ViewModel\WorkerViewModel.cs" />
     <Compile Include="View\ClientView.cs" />
     <Compile Include="View\LoginView.cs" />
     <Compile Include="View\MenuView.cs" />
     <Compile Include="View\PrincipalView.cs" />
+    <Compile Include="View\PurchaseView.cs" />
     <Compile Include="View\ToyView.cs" />
     <Compile Include="View\WorkerView.cs" />
     <Page Include="MainWindow.xaml">
