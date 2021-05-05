@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ToyStore.View
+namespace ToyStore.ViewModel
 {
-    class MenuView
+    class CustomerViewModel
     {
     }
 }

@@ -2,7 +2,7 @@
 
 namespace ToyStore.Model
 {
-    class ClientModel
+    class CustomerModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,11 +15,11 @@ namespace ToyStore.Model
         public char Gender { get; set; }
         public bool Active { get; set; }
 
-        public ClientModel()
+        public CustomerModel()
         {
         }
 
-        public ClientModel(int id, string name, string snn, DateTime birthday, string cellphone, char gender, bool active)
+        public CustomerModel(int id, string name, string snn, DateTime birthday, string cellphone, char gender, bool active)
         {
             Id = id;
             Name = name;
