@@ -11,7 +11,7 @@ namespace ToyStore.Model
         public string SSN { get; set; }
 
         public DateTime Birthday { get; set; }
-        public string Cellphone { get; set; }
+        public string Phone { get; set; }
         public char Gender { get; set; }
         public bool Active { get; set; }
 
@@ -25,7 +25,7 @@ namespace ToyStore.Model
             Name = name;
             SSN = snn;
             Birthday = birthday;
-            Cellphone = cellphone;
+            Phone = cellphone;
             Gender = gender;
             Active = active;
         }

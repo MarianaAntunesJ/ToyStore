@@ -6,40 +6,47 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ToyStore.View"
         mc:Ignorable="d"
-        Title="MenuView" Height="600" Width="1080" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="MenuView" Height="600" Width="1080" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Background="WhiteSmoke">
-            <Grid Height="40">
-                <StackPanel HorizontalAlignment="Left" Margin="20 0">
-                    <ComboBox FontSize="15" Width="50" Foreground="#FFA2A2A2" SelectedIndex="0" VerticalAlignment="Center">
-                        <ComboBoxItem Content="EN"/>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
-                    <Button Content="FAQ" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
-                    <Button Content="CONTACT" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
-                    <Button Content="ORDER STATUS" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
-                    <Button Content="MY ACCOUNT" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
-                    <Button x:Name="BtnPower" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="BtnClose">
-                        <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25" />
+            <Grid Height="70" Background="#FAFAFA">
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Height="61">
+                    <Button x:Name="BtnHome" Uid="0" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" MouseEnter="hover_MouseEnter" MouseLeave="hover_MouseLeave" FontWeight="Bold" Margin="0,6,0,0">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/Images/homeIcon.png" Height="34" Width="77" />
+                            <Label Padding="0" Content="HOME" Width="38"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="BtnPurchase" Uid="1" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" MouseEnter="hover_MouseEnter" MouseLeave="hover_MouseLeave" FontWeight="Bold" Margin="0,6,0,0">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/Images/purchaseIcon.png" Height="34" Width="77" />
+                            <Label Padding="0" Content="PURCHASE" Width="64"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="BtnToy" Uid="2" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" MouseEnter="hover_MouseEnter" MouseLeave="hover_MouseLeave" FontWeight="Bold" Margin="0,6,0,0">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/Images/toyIcon.png" Height="34" Width="77" />
+                            <Label Padding="0" Content="TOY" Width="26"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="BtnCustomer" Uid="3" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" Click="BtnCustomer_Click" MouseEnter="hover_MouseEnter" MouseLeave="hover_MouseLeave" FontWeight="Bold" Margin="0,6,0,0">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/Images/customerIcon.png" Height="34" Width="77" />
+                            <Label Padding="0" Content="CUSTOMER" Width="66"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="BtnWorker" Uid="4" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" MouseEnter="hover_MouseEnter" MouseLeave="hover_MouseLeave" FontWeight="Bold" Margin="0,6,0,0">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="/Images/workerIcon.png" Height="34" Width="77" />
+                            <Label Padding="0" Content="WORKER" Width="52"/>
+                        </StackPanel>
                     </Button>
                 </StackPanel>
+                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF6F00" HorizontalAlignment="Left" Margin="10,56,0,9"/>
+                <Rectangle HorizontalAlignment="Center" Height="4" Stroke="#FFB74D" Fill="#FFB74D"  VerticalAlignment="Top" Width="1082" Margin="-4,66,-4,0"/>
             </Grid>
-            <Grid Height="70">
-
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
-                    <Button Uid="0" Width="150" Content="HOME" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" Click="Button_Click"/>
-                    <Button Uid="1" Width="150" Content="SHOP" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" Click="Button_Click"/>
-                    <Button Uid="2" Width="150" Content="BLOG" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" Click="Button_Click"/>
-                    <Button x:Name="BtnCustomer" Uid="3" Width="150" Content="CUSTOMER" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" Click="BtnCustomer_Click"/>
-                    <Button Uid="4" Width="150" Content="PRODUCTS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" Click="Button_Click"/>
-                    <Button Uid="5" Width="150" Content="BRANDS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" Click="Button_Click"/>
-                    <Button Uid="6" Width="150" Content="GIFT CARDS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" Click="Button_Click"/>
-                </StackPanel>
-                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF6F00" HorizontalAlignment="Left" Margin="10 0"/>
-                <Rectangle HorizontalAlignment="Center" Height="4" Stroke="#FF6F00" Fill="#FF6F00"  VerticalAlignment="Top" Width="1081" Margin="0,66,0,0"/>
-            </Grid>
-            <Frame x:Name="FrameMain" Height="490" NavigationUIVisibility="Hidden" Width="1080"/>
+            <Frame x:Name="FrameMain" Height="501" NavigationUIVisibility="Hidden"/>
         </StackPanel>
     </Grid>
 </Window>
