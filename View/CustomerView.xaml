@@ -43,6 +43,6 @@
         <Rectangle Fill="#42A5F5" HorizontalAlignment="Left" Height="1" Margin="677,329,0,0" Stroke="#0097A7" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.5,0.5"/>
         <Rectangle Fill="#42A5F5" HorizontalAlignment="Left" Height="1" Margin="677,47,0,0"  Stroke="#0097A7" VerticalAlignment="Top" Width="367" RenderTransformOrigin="0.5,0.5"/>
         <Rectangle Fill="#42A5F5" HorizontalAlignment="Left" Height="1" Margin="677,366,0,0" Stroke="#0097A7" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5"/>
-
+        
     </Grid>
 </Page>

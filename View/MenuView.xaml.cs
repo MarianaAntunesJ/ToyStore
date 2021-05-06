@@ -28,19 +28,28 @@ namespace ToyStore.View
             FrameMain.Navigate(new CustomerView());
         }
 
-        private void hover_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
-            
+            ControlaGridCursor(e);
+            FrameMain.Navigate(new MainView());
         }
 
-        private void hover_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        private void BtnPurchase_Click(object sender, RoutedEventArgs e)
         {
-            BtnHome.Background = Brushes.Transparent;
+            ControlaGridCursor(e);
+            FrameMain.Navigate(new PurchaseView());
         }
 
-        private void BtnWorker_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void BtnToy_Click(object sender, RoutedEventArgs e)
         {
-            BtnHome.Background = Brushes.Coral;
+            ControlaGridCursor(e);
+            FrameMain.Navigate(new ToyView());
+        }
+
+        private void BtnWorker_Click(object sender, RoutedEventArgs e)
+        {
+            ControlaGridCursor(e);
+            FrameMain.Navigate(new WorkerView());
         }
     }
 }
