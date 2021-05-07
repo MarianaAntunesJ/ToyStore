@@ -24,6 +24,5 @@ namespace ToyStore.View
         {
             InitializeComponent();
         }
-
     }
 }

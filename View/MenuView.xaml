@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:ToyStore.View"
         mc:Ignorable="d"
         Title="MenuView" Height="600" Width="1080" WindowStartupLocation="CenterScreen">
-    <Grid>
+    
+    <Viewbox>
         <StackPanel Background="WhiteSmoke">
             <Grid Height="70" Background="#FAFAFA">
 
@@ -48,5 +49,5 @@
             </Grid>
             <Frame x:Name="FrameMain" Height="501" NavigationUIVisibility="Hidden"/>
         </StackPanel>
-    </Grid>
+    </Viewbox>
 </Window>
