@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:ToyStore.View"
         mc:Ignorable="d"
         Title="MenuView" Height="600" Width="1080" WindowStartupLocation="CenterScreen">
-    
+
     <Viewbox>
         <StackPanel Background="WhiteSmoke">
             <Grid Height="70" Background="#FAFAFA">
@@ -15,31 +15,31 @@
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0" Height="61">
                     <Button x:Name="BtnHome" Uid="0" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" FontWeight="Bold" Margin="0,6,0,0" Click="BtnHome_Click">
                         <StackPanel Orientation="Vertical">
-                            <Image Source="/Images/homeIcon.png" Height="34" Width="77" />
+                            <Image Source="/Images/homeIcon.png" Height="27" Width="34" />
                             <Label Padding="0" Content="HOME" Width="38"/>
                         </StackPanel>
                     </Button>
                     <Button x:Name="BtnPurchase" Uid="1" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" FontWeight="Bold" Margin="0,6,0,0" Click="BtnPurchase_Click">
                         <StackPanel Orientation="Vertical">
-                            <Image Source="/Images/purchaseIcon.png" Height="34" Width="77" />
+                            <Image Source="/Images/purchaseIcon.png" Height="27" Width="34" />
                             <Label Padding="0" Content="PURCHASE" Width="64"/>
                         </StackPanel>
                     </Button>
                     <Button x:Name="BtnToy" Uid="2" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" FontWeight="Bold" Margin="0,6,0,0" Click="BtnToy_Click">
                         <StackPanel Orientation="Vertical">
-                            <Image Source="/Images/toyIcon.png" Height="34" Width="77" />
+                            <Image Source="/Images/toyIcon.png" Height="27" Width="34" />
                             <Label Padding="0" Content="TOY" Width="26"/>
                         </StackPanel>
                     </Button>
                     <Button x:Name="BtnCustomer" Uid="3" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" Click="BtnCustomer_Click" FontWeight="Bold" Margin="0,6,0,0">
                         <StackPanel Orientation="Vertical">
-                            <Image Source="/Images/customerIcon.png" Height="34" Width="77" />
+                            <Image Source="/Images/customerIcon.png" Height="27" Width="34" />
                             <Label Padding="0" Content="CUSTOMER" Width="66"/>
                         </StackPanel>
                     </Button>
                     <Button x:Name="BtnWorker" Uid="4" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" FontWeight="Bold" Margin="0,6,0,0" Click="BtnWorker_Click">
                         <StackPanel Orientation="Vertical">
-                            <Image Source="/Images/workerIcon.png" Height="34" Width="77" />
+                            <Image Source="/Images/workerIcon.png" Height="27" Width="34" />
                             <Label Padding="0" Content="WORKER" Width="52"/>
                         </StackPanel>
                     </Button>

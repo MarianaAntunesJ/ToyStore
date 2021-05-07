@@ -6,10 +6,7 @@ namespace ToyStore.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        // Social Security Number is similar to CPF (Cadastro de pessoa física)
-        public string SSN { get; set; }
-
+        public string CPF { get; set; }
         public DateTime Birthday { get; set; }
         public string Phone { get; set; }
         public char Gender { get; set; }
@@ -19,11 +16,11 @@ namespace ToyStore.Model
         {
         }
 
-        public CustomerModel(int id, string name, string snn, DateTime birthday, string cellphone, char gender, bool active)
+        public CustomerModel(int id, string name, string cpf, DateTime birthday, string cellphone, char gender, bool active)
         {
             Id = id;
             Name = name;
-            SSN = snn;
+            CPF = cpf;
             Birthday = birthday;
             Phone = cellphone;
             Gender = gender;
