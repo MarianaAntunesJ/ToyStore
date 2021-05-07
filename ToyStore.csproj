@@ -78,6 +78,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DAL\Connection.cs" />
+    <Compile Include="DAL\CustomerDAO.cs" />
+    <Compile Include="DAL\QueryHelper.cs" />
     <Compile Include="Model\PurchaseModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

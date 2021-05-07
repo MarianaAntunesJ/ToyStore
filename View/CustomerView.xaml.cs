@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToyStore.ViewModel;
 using Xceed.Wpf.Toolkit;
 
 namespace ToyStore.View
@@ -21,9 +22,18 @@ namespace ToyStore.View
     /// </summary>
     public partial class CustomerView : Page
     {
+        private CustomerViewModel _customerViewModel { get; set; }
+
         public CustomerView()
         {
             InitializeComponent();
+            _customerViewModel = new CustomerViewModel();
+            DataContext = _customerViewModel;
+        }
+
+        private void TxbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

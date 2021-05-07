@@ -12,7 +12,7 @@
 
     <Grid Background="#EEEEEE">
         
-        <TextBox x:Name="TxbSearch" HorizontalAlignment="Left" Height="28" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="485" BorderBrush="Black">
+        <TextBox x:Name="TxbSearch" HorizontalAlignment="Left" Height="28" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="485" BorderBrush="Black" TextChanged="TxbSearch_TextChanged">
             <TextBox.Style>
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                     <Style.Resources>

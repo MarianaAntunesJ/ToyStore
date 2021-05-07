@@ -6,24 +6,24 @@ namespace ToyStore.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string CPF { get; set; }
-        public DateTime Birthday { get; set; }
         public string Phone { get; set; }
-        public char Gender { get; set; }
+        public string CPF { get; set; }
+        public string Gender { get; set; }
+        public DateTime Birthday { get; set; }
         public bool Active { get; set; }
 
         public CustomerModel()
         {
         }
 
-        public CustomerModel(int id, string name, string cpf, DateTime birthday, string cellphone, char gender, bool active)
+        public CustomerModel(int id, string name, string phone, string cPF, string gender, DateTime birthday, bool active)
         {
             Id = id;
             Name = name;
-            CPF = cpf;
-            Birthday = birthday;
-            Phone = cellphone;
+            Phone = phone;
+            CPF = cPF;
             Gender = gender;
+            Birthday = birthday;
             Active = active;
         }
     }
