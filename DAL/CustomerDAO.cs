@@ -24,12 +24,12 @@ namespace ToyStore.DAL
 
         private bool CustomerData(CustomerModel customer)
         {
-            Cmd.Parameters.AddWithValue("@Nome", customer.Name);
-            Cmd.Parameters.AddWithValue("@Telefone", customer.Phone);
+            Cmd.Parameters.AddWithValue("@Name", customer.Name);
+            Cmd.Parameters.AddWithValue("@Phone", customer.Phone);
             Cmd.Parameters.AddWithValue("@CPF", customer.CPF);
-            Cmd.Parameters.AddWithValue("@Sexo", customer.Gender);
-            Cmd.Parameters.AddWithValue("@DataNascimento", Convert.ToDateTime(customer.Birthday).ToShortDateString());
-            Cmd.Parameters.AddWithValue("@Ativo", customer.Active);
+            Cmd.Parameters.AddWithValue("@Gender", customer.Gender);
+            Cmd.Parameters.AddWithValue("@Birthday", Convert.ToDateTime(customer.Birthday).ToShortDateString());
+            Cmd.Parameters.AddWithValue("@Active", customer.Active);
 
             if (Cmd.ExecuteNonQuery() == 1)
                 return true;

@@ -6,7 +6,15 @@
     <Application.Resources>
         
         <ResourceDictionary>
-            
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Blue.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
             <Style TargetType="Page" x:Key="DesignTela">
                 <Setter Property="FontSize" Value="16"/>
                 <Setter Property="Background" Value="#EEEEEE"/>
@@ -16,6 +24,7 @@
                 <Setter Property="MinWidth" Value="1080"/>
                 <Setter Property="Language" Value="pt-br"/>
             </Style>
+            
 
             <Style TargetType="Button" x:Key="btnBlue">
                 <Setter Property="Background" Value="#42A5F5"/>
