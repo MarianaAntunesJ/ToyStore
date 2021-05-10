@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using ToyStore.ViewModel;
+using Xceed.Wpf.Toolkit;
 
 namespace ToyStore.View
 {
@@ -14,6 +15,7 @@ namespace ToyStore.View
             InitializeComponent();
             _customerViewModel = new CustomerViewModel();
             DataContext = _customerViewModel;
+            CbActive.IsChecked = true;
         }
         private void OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
@@ -52,6 +54,18 @@ namespace ToyStore.View
                 else if (_customerViewModel.Customer.Gender.Equals("Other"))
                     RbOther.IsChecked = true;
             }
+        }
+
+        private void BtNewUser_Click(object sender, RoutedEventArgs e)
+        {
+            _customerViewModel.ClearView();
+        }
+
+        private void MtxbPhone_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var nome = (MaskedTextBox)sender;
+            if(nome.MaskedTextProvider.AssignedEditPositionCount == 0)
+                nome.CaretIndex = 0;
         }
     }
 }

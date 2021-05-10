@@ -31,6 +31,8 @@ namespace ToyStore.ViewModel
             _customer = new CustomerModel();
             ClearView();
             UpdateList();
+            if (Customer.Id == 0)
+                Customer.Active = true;
         }
 
         public bool Save()

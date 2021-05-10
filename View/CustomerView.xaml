@@ -5,13 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:local="clr-namespace:ToyStore.View"
-      mc:Ignorable="d" 
-      d:DesignHeight="440" d:DesignWidth="1080"
-      Title="CustomerView">
+      mc:Ignorable="d" d:DesignWidth="1080"
+      Title="CustomerView" Height="500
+">
 
 
     <Grid Background="#EEEEEE">
-        
+
         <TextBox x:Name="TxbSearch" HorizontalAlignment="Left" Height="28" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="485" BorderBrush="Black" TextChanged="TxbSearch_TextChanged">
             <TextBox.Style>
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
@@ -36,51 +36,52 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        
-        <DataGrid x:Name="DgCustomers" ItemsSource="{Binding Customers}" Background="White" IsReadOnly="True" HorizontalAlignment="Left" Height="383" Margin="10,47,0,0" VerticalAlignment="Top" Width="631" BorderBrush="Black" SelectionChanged="DgCustomers_SelectionChanged"/>
-        
-        <Label Name="LbCustomerInformation" Content="Customer Information:" Foreground="Black" HorizontalAlignment="Left" Margin="770,17,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="40" Width="178"/>
-        
-        <Label Name="LbId"  Foreground="Black" Content="Id:" HorizontalAlignment="Left" Margin="677,66,0,0" VerticalAlignment="Top" Height="31" Width="88" FontWeight="Bold" FontSize="16"/>
-        <TextBox Name="TxbId" Text="{Binding Customer.Id}" Style="{StaticResource Textbox1}" Background="White" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="770,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258" FontSize="16"/>
-        
-        <Label x:Name="LbName" Foreground="Black" Content="Name:" HorizontalAlignment="Left" Margin="677,92,0,0" VerticalAlignment="Top" Height="31" Width="88" FontWeight="Bold" FontSize="16"/>
-        <TextBox x:Name="TxBName" Text="{Binding Customer.Name}" Style="{StaticResource Textbox1}" Background="White" HorizontalAlignment="Left" Height="26" Margin="770,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258"/>
 
-        <Label x:Name="LbPhone" Foreground="Black" Content="Phone:" HorizontalAlignment="Left" Margin="677,123,0,0" VerticalAlignment="Top" Height="31" Width="88" FontWeight="Bold" FontSize="16"/>
-        <wpfx:MaskedTextBox x:Name="MtxbPhone" Text="{Binding Customer.Phone}" Style="{StaticResource Textbox1}" Width="258" Height="27" Mask="(00) 00000-0000" HorizontalAlignment="Left" Margin="770,128,0,0" VerticalAlignment="Top" />
-        
-        <Label x:Name="LbCPF" Foreground="Black" Content="CPF:" HorizontalAlignment="Left" Margin="677,150,0,0" VerticalAlignment="Top" Height="31" Width="86" FontWeight="Bold" FontSize="16"/>
-        <wpfx:MaskedTextBox x:Name="MtxbCPF" Text="{Binding Customer.CPF}" Style="{StaticResource Textbox1}" Width="258" Height="27" Mask="000,000,000-00" HorizontalAlignment="Left" Margin="770,157,0,0" VerticalAlignment="Top" />
+        <DataGrid x:Name="DgCustomers" ItemsSource="{Binding Customers}" Background="White" IsReadOnly="True" HorizontalAlignment="Left" Height="387" Margin="10,47,0,0" VerticalAlignment="Top" Width="685" BorderBrush="Black" SelectionChanged="DgCustomers_SelectionChanged" AutoGenerateColumns="True" AutoGeneratingColumn="OnAutoGeneratingColumn"/>
 
-        <Label x:Name="LbGender" Foreground="Black" Content="Gender:" HorizontalAlignment="Left" Margin="833,186,0,0" VerticalAlignment="Top" Height="31" Width="71" FontWeight="Bold" FontSize="16"/>
-        <RadioButton x:Name="RbFeminine" GroupName="RbGender" Content="FEMININE" HorizontalAlignment="Left" Margin="713,220,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
-        <RadioButton x:Name="RbMasculine" GroupName="RbGender" Content="MASCULINE" HorizontalAlignment="Left" Margin="816,220,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
-        <RadioButton x:Name="RbOther" GroupName="RbGender" Content="OTHER" HorizontalAlignment="Left" Margin="934,220,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
+        <Label Name="LbCustomerInformation" Content="Customer Information:" Foreground="Black" HorizontalAlignment="Left" Margin="806,48,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="40" Width="178"/>
 
-        <Label x:Name="LbBirthday" Foreground="Black" Content="Birthday:" HorizontalAlignment="Left" Margin="742,254,0,0" VerticalAlignment="Top" Height="31" Width="82" FontWeight="Bold" FontSize="16"/>
-        <DatePicker x:Name="DpBirthday" Text="{Binding Customer.Birhtday, StringFormat=d}" HorizontalAlignment="Left" Margin="682,285,0,0" VerticalAlignment="Top" Width="196" Background="#00000000" BorderBrush="Black" Height="28" FontSize="16"/>
-        
-        <Label x:Name="LbStatus" Foreground="Black" Content="Status:" HorizontalAlignment="Left" Margin="682,329,0,0" VerticalAlignment="Top" Height="31" Width="65" FontWeight="Bold" FontSize="16"/>
-        <CheckBox x:Name="CbActive" IsChecked="{Binding Customer.Active}" Content="Active" HorizontalAlignment="Left" Margin="770,335,0,0" VerticalAlignment="Top" Height="23" Width="74" FontWeight="Bold" FontSize="16" RenderTransformOrigin="0.153,0.53"/>
-        
-        <Button x:Name="BtSave" Style="{StaticResource btnBlue}" Content="Save" HorizontalAlignment="Left" Margin="742,386,0,0" VerticalAlignment="Top" Width="88" Height="30" FontSize="14" Click="BtSave_Click" />
-        
-        <Image x:Name="ImgCustomer" Source="/Images/customer.png" Margin="901,298,-34,-76" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="213">
+        <Label Name="LbId"  Foreground="Black" Content="Id:" HorizontalAlignment="Left" Margin="712,96,0,0" VerticalAlignment="Top" Height="32" Width="88" FontWeight="Bold" FontSize="16"/>
+        <TextBox Name="TxbId" Text="{Binding Customer.Id}" Style="{StaticResource Textbox2}" Background="White" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="806,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258" FontSize="16"/>
+
+        <Label x:Name="LbName" Foreground="Black" Content="Name:" HorizontalAlignment="Left" Margin="712,122,0,0" VerticalAlignment="Top" Height="32" Width="88" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="TxBName" Text="{Binding Customer.Name}" Style="{StaticResource Textbox1}" Background="White" HorizontalAlignment="Left" Height="26" Margin="806,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258"/>
+
+        <Label x:Name="LbPhone" Foreground="Black" Content="Phone:" HorizontalAlignment="Left" Margin="712,154,0,0" VerticalAlignment="Top" Height="30" Width="88" FontWeight="Bold" FontSize="16"/>
+        <wpfx:MaskedTextBox x:Name="MtxbPhone" Text="{Binding Customer.Phone}" Style="{StaticResource Textbox1}" Width="258" Height="28" Mask="(00) 00000-0000" HorizontalAlignment="Left" Margin="806,158,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="MtxbPhone_PreviewMouseLeftButtonUp" />
+
+        <Label x:Name="LbCPF" Foreground="Black" Content="CPF:" HorizontalAlignment="Left" Margin="712,180,0,0" VerticalAlignment="Top" Height="32" Width="86" FontWeight="Bold" FontSize="16"/>
+        <wpfx:MaskedTextBox x:Name="MtxbCPF" Text="{Binding Customer.CPF}" Style="{StaticResource Textbox1}" Width="258" Height="26" Mask="000,000,000-00" HorizontalAlignment="Left" Margin="806,188,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="MtxbPhone_PreviewMouseLeftButtonUp" />
+
+        <Label x:Name="LbGender" Foreground="Black" Content="Gender:" HorizontalAlignment="Left" Margin="868,216,0,0" VerticalAlignment="Top" Height="32" Width="72" FontWeight="Bold" FontSize="16"/>
+        <RadioButton x:Name="RbFeminine" GroupName="RbGender" Content="FEMININE" HorizontalAlignment="Left" Margin="748,250,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
+        <RadioButton x:Name="RbMasculine" GroupName="RbGender" Content="MASCULINE" HorizontalAlignment="Left" Margin="852,250,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
+        <RadioButton x:Name="RbOther" GroupName="RbGender" Content="OTHER" HorizontalAlignment="Left" Margin="970,250,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
+
+        <Label x:Name="LbBirthday" Foreground="Black" Content="Birthday:" HorizontalAlignment="Left" Margin="718,284,0,0" VerticalAlignment="Top" Height="32" Width="82" FontWeight="Bold" FontSize="16"/>
+        <DatePicker x:Name="DpBirthday" Text="{Binding Customer.Birhtday, StringFormat=d}" HorizontalAlignment="Left" Margin="806,288,0,0" VerticalAlignment="Top" Width="196" Background="#00000000" BorderBrush="Black" Height="28" FontSize="16"/>
+
+        <Label x:Name="LbStatus" Foreground="Black" Content="Status:" HorizontalAlignment="Left" Margin="718,339,0,0" VerticalAlignment="Top" Height="30" Width="64" FontWeight="Bold" FontSize="16"/>
+        <CheckBox x:Name="CbActive" IsChecked="{Binding Customer.Active}" Content="Active" HorizontalAlignment="Left" Margin="806,345,0,0" VerticalAlignment="Top" Height="22" Width="74" FontWeight="Bold" FontSize="16" RenderTransformOrigin="0.153,0.53"/>
+
+        <Button x:Name="BtSave" Style="{StaticResource btnBlue}" Content="Save" HorizontalAlignment="Left" Margin="520,460,0,0" VerticalAlignment="Top" Width="110" Height="30" FontSize="14" Click="BtSave_Click"/>
+        <Button x:Name="BtNewUser" Style="{StaticResource btnBlue}" Content="New user" HorizontalAlignment="Left" Margin="736,404,0,0" VerticalAlignment="Top" Width="144" Height="30" FontSize="14" Background="#FF70CDC0" Click="BtNewUser_Click"/>
+
+        <Image x:Name="ImgCustomer" Source="/Images/customer.png" Margin="945,346,-24,-77" RenderTransformOrigin="0.443,0.434" HorizontalAlignment="Left" Width="159">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="-23.743"/>
-                    <TranslateTransform/>
+                    <RotateTransform Angle="-18.319"/>
+                    <TranslateTransform X="-4.644" Y="4.572"/>
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-       
-        <Rectangle Fill="#42A5F5" HorizontalAlignment="Left" Height="1" Margin="682,248,0,0" Stroke="#0097A7" VerticalAlignment="Top" Width="367" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#42A5F5" HorizontalAlignment="Left" Height="1" Margin="677,329,0,0" Stroke="#0097A7" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#42A5F5" HorizontalAlignment="Left" Height="1" Margin="677,47,0,0"  Stroke="#0097A7" VerticalAlignment="Top" Width="367" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#42A5F5" HorizontalAlignment="Left" Height="1" Margin="677,366,0,0" Stroke="#0097A7" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5"/>
+
+        <Rectangle Fill="#42A5F5" HorizontalAlignment="Left" Height="2" Margin="718,278,0,0" Stroke="#0097A7" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
+        <Rectangle Fill="#42A5F5" HorizontalAlignment="Left" Height="2" Margin="718,325,0,0" Stroke="#0097A7" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
+        <Rectangle Fill="#42A5F5" HorizontalAlignment="Left" Height="2" Margin="718,82,0,0" Stroke="#0097A7" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
+        <Rectangle Fill="#42A5F5" HorizontalAlignment="Left" Height="2" Margin="712,375,0,0" Stroke="#0097A7" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5"/>
 
     </Grid>
 </Page>
