@@ -184,22 +184,14 @@
     <Resource Include="Images\customer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\purchaseIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\homeIcon.png" />
+    <Resource Include="Images\search.PNG" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\customerIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Images\homeIcon.png" />
+    <Resource Include="Images\purchaseIcon.png" />
     <Resource Include="Images\toyIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\workerIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\search.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
