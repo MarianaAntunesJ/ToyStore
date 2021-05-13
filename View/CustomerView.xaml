@@ -5,10 +5,31 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:local="clr-namespace:ToyStore.View"
+      xmlns:viewmodel="clr-namespace:ToyStore.ViewModel"
       mc:Ignorable="d" d:DesignWidth="1080"
       Title="CustomerView" Height="500
 ">
 
+    <Page.Resources>
+        <viewmodel:CustomerViewModel x:Key="viewModel"/>
+
+        <ControlTemplate x:Key="validationTemplate">
+            <DockPanel>
+                <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
+                <AdornedElementPlaceholder/>
+            </DockPanel>
+        </ControlTemplate>
+
+        <Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+              Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                              Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="#EEEEEE" Margin="-10,0,10,0">
 
@@ -18,7 +39,7 @@
                     <Style.Resources>
                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                             <VisualBrush.Visual>
-                                <Label Content="Search by Id, or name, or CPF" Foreground="Gray" />
+                                <Label Content="Search by Id, or name, or CPF" Height="28" Background="White" Width="330" Foreground="Gray" />
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </Style.Resources>
@@ -51,7 +72,16 @@
         <wpfx:MaskedTextBox x:Name="MtxbPhone" Text="{Binding Customer.Phone}" Style="{StaticResource Textbox1}" Width="258" Height="28" Mask="(00) 00000-0000" HorizontalAlignment="Left" Margin="783,173,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="MtxbPhone_PreviewMouseLeftButtonUp" />
 
         <Label x:Name="LbCPF" Foreground="Black" Content="CPF:" HorizontalAlignment="Left" Margin="689,195,0,0" VerticalAlignment="Top" Height="32" Width="86" FontWeight="Bold" FontSize="16"/>
-        <wpfx:MaskedTextBox x:Name="MtxbCPF" Text="{Binding Customer.CPF, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Textbox1}" Width="258" Height="26" Mask="000,000,000-00" HorizontalAlignment="Left" Margin="783,203,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="MtxbPhone_PreviewMouseLeftButtonUp" />
+        <wpfx:MaskedTextBox x:Name="MtxbCPF" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource textBoxInError}" Width="258" Height="26" Mask="000,000,000-00" HorizontalAlignment="Left" Margin="783,203,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="MtxbPhone_PreviewMouseLeftButtonUp">
+            <wpfx:MaskedTextBox.Text>
+                <Binding Path="Customer.CPF"  Source="{StaticResource viewModel}"
+                         UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <local:ValidationCPF/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </wpfx:MaskedTextBox.Text>
+        </wpfx:MaskedTextBox>
 
         <Label x:Name="LbGender" Foreground="Black" Content="Gender:" HorizontalAlignment="Left" Margin="845,231,0,0" VerticalAlignment="Top" Height="32" Width="72" FontWeight="Bold" FontSize="16"/>
         <RadioButton x:Name="RbFeminine" GroupName="RbGender" Content="FEMININE" HorizontalAlignment="Left" Margin="725,265,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
@@ -59,7 +89,7 @@
         <RadioButton x:Name="RbOther" GroupName="RbGender" Content="OTHER" HorizontalAlignment="Left" Margin="947,265,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
 
         <Label x:Name="LbBirthday" Foreground="Black" Content="Birthday:" HorizontalAlignment="Left" Margin="695,299,0,0" VerticalAlignment="Top" Height="32" Width="82" FontWeight="Bold" FontSize="16"/>
-        <DatePicker x:Name="DpBirthday" Text="{Binding Customer.Birhtday, StringFormat=d}" HorizontalAlignment="Left" Margin="783,303,0,0" VerticalAlignment="Top" Width="196" Background="#00000000" BorderBrush="Black" Height="28" FontSize="16"/>
+        <DatePicker x:Name="DpBirthday" SelectedDate="{Binding Customer.Birthday, StringFormat=d}" HorizontalAlignment="Left" Margin="783,303,0,0" VerticalAlignment="Top" Width="196" Background="#00000000" BorderBrush="Black" Height="28" FontSize="16"/>
 
         <Label x:Name="LbStatus" Foreground="Black" Content="Status:" HorizontalAlignment="Left" Margin="695,354,0,0" VerticalAlignment="Top" Height="30" Width="64" FontWeight="Bold" FontSize="16"/>
         <CheckBox x:Name="CbActive" IsChecked="{Binding Customer.Active}" Content="Active" HorizontalAlignment="Left" Margin="783,360,0,0" VerticalAlignment="Top" Height="22" Width="74" FontWeight="Bold" FontSize="16" RenderTransformOrigin="0.153,0.53"/>

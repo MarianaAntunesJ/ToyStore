@@ -9,6 +9,7 @@ namespace ToyStore.View
     public partial class CustomerView : Page
     {
         private CustomerViewModel _customerViewModel { get; set; }
+        private ValidationCPF _validationCpf { get; set; } = new ValidationCPF();
 
         public CustomerView()
         {
@@ -17,10 +18,13 @@ namespace ToyStore.View
             DataContext = _customerViewModel;
             CbActive.IsChecked = true;
         }
+
         private void OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             if (e.PropertyType == typeof(DateTime))
                 (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy";
+            else if (e.PropertyName == "CPF")
+                e.Column.Visibility = Visibility.Collapsed;
         }
 
         private void TxbSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -30,8 +34,19 @@ namespace ToyStore.View
 
         private void BtSave_Click(object sender, RoutedEventArgs e)
         {
-            if (_customerViewModel.Save())
-                System.Windows.MessageBox.Show("Cliente salvo!", "Salvo");
+            if (_validationCpf.IsCpf(MtxbCPF.Text))
+            {
+                if (_customerViewModel.Save(MtxbCPF.Text))
+                {
+                    RbFeminine.IsChecked = false;
+                    RbMasculine.IsChecked = false;
+                    RbOther.IsChecked = false;
+                    MtxbCPF.Text = "";
+                    System.Windows.MessageBox.Show("Cliente salvo!", "Salvo");
+                }
+                else
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Cliente não foi salvo.", "Erro");
+            }   
             else
                 Xceed.Wpf.Toolkit.MessageBox.Show("Cliente não foi salvo.", "Erro");
         }
@@ -47,11 +62,11 @@ namespace ToyStore.View
             {
                 _customerViewModel.Select(DgCustomers.Items.IndexOf(DgCustomers.CurrentItem));
 
-                if (_customerViewModel.Customer.Gender.Equals("Feminine"))
+                if (_customerViewModel.Customer.Gender.Equals("FEMININE"))
                     RbFeminine.IsChecked = true;
-                else if (_customerViewModel.Customer.Gender.Equals("Masculine"))
+                else if (_customerViewModel.Customer.Gender.Equals("MASCULINE"))
                     RbMasculine.IsChecked = true;
-                else if (_customerViewModel.Customer.Gender.Equals("Other"))
+                else if (_customerViewModel.Customer.Gender.Equals("OTHER"))
                     RbOther.IsChecked = true;
             }
         }

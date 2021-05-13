@@ -1,8 +1,29 @@
-﻿namespace ToyStore.Model
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Controls;
+using ToyStore.ViewModel;
+
+namespace ToyStore.View
 {
-	public static class Validacoes
-    {
-		public static bool IsCpf(string cpf)
+	public class ValidationCPF : ValidationRule
+	{
+        public string Teste{ get; set; }
+
+        public ValidationCPF()
+        {
+        }
+
+        public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
+		{
+			if (IsCpf((string)value))
+				return new ValidationResult(true, null);
+			else
+				return new ValidationResult(false, "Cpf is invalid");
+		}
+
+
+		public bool IsCpf(string cpf)
 		{
 			int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 			int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -11,7 +32,7 @@
 			int soma;
 			int resto;
 			cpf = cpf.Trim();
-			cpf = cpf.Replace(".", "").Replace("-", "");
+			cpf = cpf.Replace(".", "").Replace("-", "").Replace("_", ""); ;
 			if (cpf.Length != 11)
 				return false;
 			tempCpf = cpf.Substring(0, 9);

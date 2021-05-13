@@ -23,8 +23,7 @@
                 <Setter Property="MinHeight" Value="600"/>
                 <Setter Property="MinWidth" Value="1080"/>
                 <Setter Property="Language" Value="pt-br"/>
-            </Style>
-            
+            </Style>            
 
             <Style TargetType="Button" x:Key="btnBlue">
                 <Setter Property="Background" Value="#42A5F5"/>

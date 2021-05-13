@@ -6,7 +6,7 @@ using ToyStore.Model;
 
 namespace ToyStore.ViewModel
 {
-    class CustomerViewModel : INotifyPropertyChanged
+    public class CustomerViewModel : INotifyPropertyChanged
     {
         private CustomerModel _customer { get; set; }
         private CustomerDAO _customerDAO;
@@ -16,7 +16,12 @@ namespace ToyStore.ViewModel
         public CustomerModel Customer
         {
             get { return _customer; }
-            set { _customer = value; OnPropertyChanged("Customer"); }
+            set 
+            { 
+                _customer = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("Customer"));
+            }
         }
 
         public ObservableCollection<CustomerModel> Customers
@@ -35,9 +40,10 @@ namespace ToyStore.ViewModel
                 Customer.Active = true;
         }
 
-        public bool Save()
+        public bool Save(string cpf)
         {
             bool success;
+            _customer.CPF = cpf;
             if (_customer.Id == 0)
                 success = _customerDAO.Insert(_customer);
             else
@@ -68,7 +74,7 @@ namespace ToyStore.ViewModel
 
         public void ClearView()
         {
-            Customer = new CustomerModel { Birthday = DateTime.Today }; ;
+            Customer = new CustomerModel { Birthday = DateTime.Today };
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
