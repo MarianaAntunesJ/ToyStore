@@ -41,7 +41,7 @@ namespace ToyStore.View
                     RbFeminine.IsChecked = false;
                     RbMasculine.IsChecked = false;
                     RbOther.IsChecked = false;
-                    MtxbCPF.Text = "";
+                    MtxbCPF.Text = string.Empty;
                     System.Windows.MessageBox.Show("Cliente salvo!", "Salvo");
                 }
                 else

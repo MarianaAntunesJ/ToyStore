@@ -15,20 +15,62 @@
 
         <ControlTemplate x:Key="validationTemplate">
             <DockPanel>
-                <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
+                <TextBlock Foreground="Red" FontSize="20" FontWeight="Bold">!</TextBlock>
                 <AdornedElementPlaceholder/>
             </DockPanel>
         </ControlTemplate>
 
-        <Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
+        <Style x:Key="DefaultTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border x:Name="border"
+                                    CornerRadius="3"
+                                    BorderBrush="Gray"
+                                    BorderThickness="2"
+                                    Background="#fff"
+>
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                              Focusable="false"
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ToolTipWithErrorMessageOnErrorStyle" TargetType="TextBox" BasedOn="{StaticResource DefaultTextBoxStyle}">
             <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="true">
-                    <Setter Property="ToolTip"
-              Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                              Path=(Validation.Errors)[0].ErrorContent}"/>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="textBoxInError" TargetType="TextBox" BasedOn="{StaticResource ToolTipWithErrorMessageOnErrorStyle}">
+            <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border x:Name="border"
+                                    CornerRadius="3"
+                                    BorderBrush="Red"
+                                    BorderThickness="2"
+                                    Background="#fff"
+>
+                                    <ScrollViewer x:Name="PART_ContentHost"
+                                              Focusable="false"
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollBarVisibility="Hidden"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                </Style.Triggers>
+            </Style>
     </Page.Resources>
 
     <Grid Background="#EEEEEE" Margin="-10,0,10,0">
