@@ -9,7 +9,7 @@ namespace ToyStore.View
     public partial class CustomerView : Page
     {
         private CustomerViewModel _customerViewModel { get; set; }
-        private ValidationCPF _validationCpf { get; set; } = new ValidationCPF();
+        private ValidationView _validationCpf { get; set; } = new ValidationView();
 
         public CustomerView()
         {
@@ -45,10 +45,10 @@ namespace ToyStore.View
                     System.Windows.MessageBox.Show("Cliente salvo!", "Salvo");
                 }
                 else
-                    Xceed.Wpf.Toolkit.MessageBox.Show("Cliente não foi salvo.", "Erro");
+                    System.Windows.MessageBox.Show("Cliente não foi salvo.", "Erro");
             }   
             else
-                Xceed.Wpf.Toolkit.MessageBox.Show("Cliente não foi salvo.", "Erro");
+                System.Windows.MessageBox.Show("Cliente não foi salvo.", "Erro");
         }
 
         private void RbGender_Checked(object sender, RoutedEventArgs e)
@@ -62,6 +62,8 @@ namespace ToyStore.View
             {
                 _customerViewModel.Select(DgCustomers.Items.IndexOf(DgCustomers.CurrentItem));
 
+                MtxbCPF.Text = _customerViewModel.Customer.CPF;
+
                 if (_customerViewModel.Customer.Gender.Equals("FEMININE"))
                     RbFeminine.IsChecked = true;
                 else if (_customerViewModel.Customer.Gender.Equals("MASCULINE"))
@@ -73,7 +75,9 @@ namespace ToyStore.View
 
         private void BtNewUser_Click(object sender, RoutedEventArgs e)
         {
+            MtxbCPF.Text = string.Empty;
             _customerViewModel.ClearView();
+            CbActive.IsChecked = true;
         }
 
         private void MtxbPhone_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)

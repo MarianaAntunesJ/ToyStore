@@ -105,7 +105,7 @@
     <Compile Include="View\ToyView.xaml.cs">
       <DependentUpon>ToyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ValidationCPF.cs" />
+    <Compile Include="View\ValidationView.cs" />
     <Compile Include="View\WorkerView.xaml.cs">
       <DependentUpon>WorkerView.xaml</DependentUpon>
     </Compile>
