@@ -81,6 +81,7 @@
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\CustomerDAO.cs" />
     <Compile Include="DAL\QueryHelper.cs" />
+    <Compile Include="Helper\Validations.cs" />
     <Compile Include="Model\PurchaseModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

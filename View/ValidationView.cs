@@ -1,10 +1,14 @@
 ﻿using System.Windows.Controls;
+using ToyStore.Helper;
 
 namespace ToyStore.View
 {
     public class ValidationView : ValidationRule
     {
         public TypesValidate TypeValidate { get; set; }
+        public Validations Validation { get; set; } = new Validations();
+        private readonly string _phoneMask = "(__) _____-____";
+        private readonly string _cpfMask = "___.___.___-__";
 
         public ValidationView()
         {
@@ -12,93 +16,67 @@ namespace ToyStore.View
 
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
-            if (TypeValidate == TypesValidate.CPF)
+            if (!string.IsNullOrWhiteSpace((string)value))
             {
-                if(ValidateCPF((string)value))
-                    return new ValidationResult(IsCpf((string)value), null);
-                return new ValidationResult(false, "Type Validate invallid");
+                if (TypeValidate == TypesValidate.Name)
+                {
+                    if (ValidateName((string)value))
+                        return new ValidationResult(Validation.IsNameValid((string)value), null);
+                }
+                else if (TypeValidate == TypesValidate.Phone)
+                {
+                    if (ValidatePhone((string)value))
+                        return new ValidationResult(Validation.IsPhoneValid((string)value), null);
+                }
+
+                else if (TypeValidate == TypesValidate.CPF)
+                {
+                    if (ValidateCPF((string)value))
+                        return new ValidationResult(Validation.IsCpf((string)value), null);
+                }
             }
-            else if (TypeValidate == TypesValidate.Name)
-            {
-                if (IsNameValid((string)value))
-                    return new ValidationResult(IsNameValid((string)value), null);
-                return new ValidationResult(false, "Type Validate invallid");
-            }
-            else if (TypeValidate == TypesValidate.Phone)
-            {
-                if (IsPhoneValid((string)value))
-                    return new ValidationResult(IsPhoneValid((string)value), null);
-                return new ValidationResult(false, "Type Validate invallid");
-            }
-            return new ValidationResult(false, "Invallid");
+            else
+                return new ValidationResult(true, "");
+            return new ValidationResult(false, "Type Validate invallid");
+
         }
 
-        private bool ValidateCPF(string cpf)
+        public bool ValidatePerson(string name, string phone, string cpf)
         {
-            if (IsCpf(cpf))
+            if (ValidateName(name) && ValidatePhone(phone) && ValidateCPF(cpf))
                 return true;
             return false;
         }
 
-        public bool IsNameValid(string name)
+        public bool ValidateName(string name)
         {
-            if (!string.IsNullOrWhiteSpace(name))
+            if (Validation.IsNameValid(name))
                 return true;
             return false;
         }
 
-        public bool IsPhoneValid(string phone)
+        public bool ValidatePhone(string phone)
         {
-            if (!string.IsNullOrWhiteSpace(phone))
-            {
-                if(phone.Length == 9)
-                 return true;
-            }   
+            phone = phone.Replace(_phoneMask, string.Empty);
+            if (Validation.IsPhoneValid(phone))
+                return true;
             return false;
         }
 
-
-        public bool IsCpf(string cpf)
+        public bool ValidateCPF(string cpf)
         {
-            int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            string tempCpf;
-            string digito;
-            int soma;
-            int resto;
-            cpf = cpf.Trim();
-            cpf = cpf.Replace(".", "").Replace("-", "").Replace("_", ""); ;
-            if (cpf.Length != 11)
-                return false;
-            tempCpf = cpf.Substring(0, 9);
-            soma = 0;
-
-            for (int i = 0; i < 9; i++)
-                soma += int.Parse(tempCpf[i].ToString()) * multiplicador1[i];
-            resto = soma % 11;
-            if (resto < 2)
-                resto = 0;
-            else
-                resto = 11 - resto;
-            digito = resto.ToString();
-            tempCpf = tempCpf + digito;
-            soma = 0;
-            for (int i = 0; i < 10; i++)
-                soma += int.Parse(tempCpf[i].ToString()) * multiplicador2[i];
-            resto = soma % 11;
-            if (resto < 2)
-                resto = 0;
-            else
-                resto = 11 - resto;
-            digito = digito + resto.ToString();
-            return cpf.EndsWith(digito);
+            cpf = cpf.Replace(_cpfMask, string.Empty);
+            if (Validation.IsCpf(cpf))
+                return true;
+            return false;
         }
-    }
-
-    public enum TypesValidate
-    {
-        CPF,
-        Name,
-        Phone
     }
 }
+
+public enum TypesValidate
+{
+    CPF,
+    Name,
+    Phone
+}
+

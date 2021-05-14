@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using ToyStore.Helper;
 using ToyStore.ViewModel;
 using Xceed.Wpf.Toolkit;
 
@@ -9,7 +10,7 @@ namespace ToyStore.View
     public partial class CustomerView : Page
     {
         private CustomerViewModel _customerViewModel { get; set; }
-        private ValidationView _validationCpf { get; set; } = new ValidationView();
+        private ValidationView _validationView { get; set; } = new ValidationView();
 
         public CustomerView()
         {
@@ -32,9 +33,42 @@ namespace ToyStore.View
             _customerViewModel.Query(TxbSearch.Text);
         }
 
+        private void FieldValidationViewWrong()
+        {
+            bool NameInvalid = !(_validationView.ValidateName(TxBName.Text));
+            bool PhoneInvalid = !(_validationView.ValidatePhone(MtxbPhone.Text));
+            bool CpfInvalid = !(_validationView.ValidateCPF(MtxbCPF.Text));
+
+
+            if (NameInvalid || PhoneInvalid || CpfInvalid)
+            {
+
+                if (NameInvalid && PhoneInvalid && CpfInvalid)
+                    System.Windows.MessageBox.Show("Fields Name, Phone and CPF are wrong filled. Please, fill them with correct information.", "Warning");
+
+                else if (NameInvalid && PhoneInvalid)
+                    System.Windows.MessageBox.Show("Fields Name and Phone are wrong filled. Please, fill them with correct information.", "Warning");
+
+                else if (NameInvalid && CpfInvalid)
+                    System.Windows.MessageBox.Show("Fields Name and CPF are wrong filled. Please, fill them with correct information.", "Warning");
+
+                else if (PhoneInvalid && CpfInvalid)
+                    System.Windows.MessageBox.Show("Fields Phone and CPF are wrong filled. Please, fill them with correct information.", "Warning");
+
+                else if (CpfInvalid)
+                    System.Windows.MessageBox.Show("Field Name is  wrong filled. Please, fill them with correct information.", "Warning");
+
+                else if (PhoneInvalid)
+                    System.Windows.MessageBox.Show("Field Phone is wrong filled. Please, fill them with correct information.", "Warning");
+
+                else if (CpfInvalid)
+                    System.Windows.MessageBox.Show("Field CPF is wrong filled. Please, fill them with correct information.", "Warning");
+            }
+        }
+
         private void BtSave_Click(object sender, RoutedEventArgs e)
         {
-            if (_validationCpf.IsCpf(MtxbCPF.Text))
+            if (_validationView.ValidatePerson(TxBName.Text, MtxbPhone.Text, MtxbCPF.Text))
             {
                 if (_customerViewModel.Save(MtxbCPF.Text))
                 {
@@ -45,10 +79,10 @@ namespace ToyStore.View
                     System.Windows.MessageBox.Show("Cliente salvo!", "Salvo");
                 }
                 else
-                    System.Windows.MessageBox.Show("Cliente não foi salvo.", "Erro");
-            }   
+                    FieldValidationViewWrong();
+            }
             else
-                System.Windows.MessageBox.Show("Cliente não foi salvo.", "Erro");
+                FieldValidationViewWrong();
         }
 
         private void RbGender_Checked(object sender, RoutedEventArgs e)
@@ -75,15 +109,15 @@ namespace ToyStore.View
 
         private void BtNewUser_Click(object sender, RoutedEventArgs e)
         {
-            MtxbCPF.Text = string.Empty;
             _customerViewModel.ClearView();
+            MtxbCPF.Text = string.Empty;
             CbActive.IsChecked = true;
         }
 
         private void MtxbPhone_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var nome = (MaskedTextBox)sender;
-            if(nome.MaskedTextProvider.AssignedEditPositionCount == 0)
+            if (nome.MaskedTextProvider.AssignedEditPositionCount == 0)
                 nome.CaretIndex = 0;
         }
     }
