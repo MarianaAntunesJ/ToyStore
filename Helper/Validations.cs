@@ -13,7 +13,7 @@
         {
             if (!string.IsNullOrWhiteSpace(phone))
             {
-                if (phone.Length == 15)
+                if (phone.Length == 12)
                     return true;
             }
             return false;

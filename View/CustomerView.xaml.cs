@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using ToyStore.Helper;
 using ToyStore.ViewModel;
 using Xceed.Wpf.Toolkit;
 
@@ -55,8 +54,8 @@ namespace ToyStore.View
                 else if (PhoneInvalid && CpfInvalid)
                     System.Windows.MessageBox.Show("Fields Phone and CPF are wrong filled. Please, fill them with correct information.", "Warning");
 
-                else if (CpfInvalid)
-                    System.Windows.MessageBox.Show("Field Name is  wrong filled. Please, fill them with correct information.", "Warning");
+                else if (NameInvalid)
+                    System.Windows.MessageBox.Show("Field Name is wrong filled. Please, fill them with correct information.", "Warning");
 
                 else if (PhoneInvalid)
                     System.Windows.MessageBox.Show("Field Phone is wrong filled. Please, fill them with correct information.", "Warning");

@@ -83,7 +83,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="#EEEEEE" Margin="-10,0,0,0">
+    <Grid Background="#EEEEEE">
 
         <TextBox x:Name="TxbSearch" HorizontalAlignment="Left" Height="28" Margin="10,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="488" BorderBrush="Black" TextChanged="TxbSearch_TextChanged">
             <TextBox.Style>

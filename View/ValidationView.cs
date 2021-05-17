@@ -7,8 +7,11 @@ namespace ToyStore.View
     {
         public TypesValidate TypeValidate { get; set; }
         public Validations Validation { get; set; } = new Validations();
-        private readonly string _phoneMask = "(__) _____-____";
-        private readonly string _cpfMask = "___.___.___-__";
+        private readonly string _underscore = "_";
+        private readonly string _bracketLeft = "(";
+        private readonly string _bracketRight = ")";
+        private readonly string _hiphen = "-";
+        private readonly string _period = ".";
 
         public ValidationView()
         {
@@ -57,7 +60,8 @@ namespace ToyStore.View
 
         public bool ValidatePhone(string phone)
         {
-            phone = phone.Replace(_phoneMask, string.Empty);
+            phone = phone.Replace(_bracketLeft, string.Empty).Replace(_bracketRight, string.Empty)
+                .Replace(_underscore, string.Empty).Replace(_hiphen, string.Empty);
             if (Validation.IsPhoneValid(phone))
                 return true;
             return false;
@@ -65,7 +69,8 @@ namespace ToyStore.View
 
         public bool ValidateCPF(string cpf)
         {
-            cpf = cpf.Replace(_cpfMask, string.Empty);
+            cpf = cpf.Replace(_bracketLeft, string.Empty).Replace(_bracketRight, string.Empty)
+                .Replace(_underscore, string.Empty).Replace(_hiphen, string.Empty).Replace(_period, string.Empty);
             if (Validation.IsCpf(cpf))
                 return true;
             return false;
