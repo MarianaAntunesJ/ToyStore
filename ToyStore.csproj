@@ -81,7 +81,9 @@
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\CustomerDAO.cs" />
     <Compile Include="DAL\EmployeeDAO.cs" />
+    <Compile Include="DAL\PurchaseDAO.cs" />
     <Compile Include="DAL\QueryHelper.cs" />
+    <Compile Include="DAL\ToyDAO.cs" />
     <Compile Include="Helper\Validations.cs" />
     <Compile Include="Model\PurchaseModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
@@ -204,6 +206,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\employee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\purchase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Toy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Toy2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\purchase2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

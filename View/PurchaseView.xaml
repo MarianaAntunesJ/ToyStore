@@ -86,7 +86,7 @@
 
     <Grid Background="#EEEEEE">
 
-        <TextBox x:Name="TxbSearch" HorizontalAlignment="Left" Height="28" Margin="10,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="488" BorderBrush="Black" TextChanged="TxbSearch_TextChanged">
+        <TextBox x:Name="TxbSearch" HorizontalAlignment="Left" Height="28" Margin="138,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="531" BorderBrush="Black" TextChanged="TxbSearch_TextChanged">
             <TextBox.Style>
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                     <Style.Resources>
@@ -111,7 +111,7 @@
             </TextBox.Style>
         </TextBox>
 
-        <DataGrid x:Name="DgEmployees" ItemsSource="{Binding Customers}" Background="White" IsReadOnly="True" Height="426" Margin="10,64,384,0" VerticalAlignment="Top" BorderBrush="#FF7043" SelectionChanged="DgCustomers_SelectionChanged" AutoGenerateColumns="True" AutoGeneratingColumn="OnAutoGeneratingColumn"/>
+        <DataGrid x:Name="DgPurchases" ItemsSource="{Binding Customers}" Background="White" IsReadOnly="True" Height="426" Margin="10,64,384,0" VerticalAlignment="Top" BorderBrush="#283593" AutoGenerateColumns="True"/>
 
         <Label Name="LbEmployeeInformation" Content="Employee Information:" Foreground="Black" HorizontalAlignment="Left" Margin="765,72,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="40" Width="194"/>
 
@@ -137,11 +137,6 @@
             </wpfx:MaskedTextBox.Text>
         </wpfx:MaskedTextBox>
 
-        <Label x:Name="LbGender" Foreground="Black" Content="Gender:" HorizontalAlignment="Left" Margin="848,228,0,0" VerticalAlignment="Top" Height="32" Width="72" FontWeight="Bold" FontSize="16"/>
-        <RadioButton x:Name="RbFeminine" GroupName="RbGender" Content="FEMININE" HorizontalAlignment="Left" Margin="728,262,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
-        <RadioButton x:Name="RbMasculine" GroupName="RbGender" Content="MASCULINE" HorizontalAlignment="Left" Margin="832,262,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
-        <RadioButton x:Name="RbOther" GroupName="RbGender" Content="OTHER" HorizontalAlignment="Left" Margin="950,262,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
-
         <Label x:Name="LbBirthday" Foreground="Black" Content="Birthday:" HorizontalAlignment="Left" Margin="698,296,0,0" VerticalAlignment="Top" Height="32" Width="82" FontWeight="Bold" FontSize="16"/>
         <DatePicker x:Name="DpBirthday" SelectedDate="{Binding Customer.Birthday, StringFormat=d}" HorizontalAlignment="Left" Margin="786,300,0,0" VerticalAlignment="Top" Width="196" Background="#00000000" BorderBrush="Black" Height="28" FontSize="16"/>
 
@@ -151,7 +146,7 @@
         <Button x:Name="BtSave" Style="{StaticResource btnBlue}" Content="Save" HorizontalAlignment="Left" Margin="786,426,0,0" VerticalAlignment="Top" Width="110" Height="30" FontSize="14" Click="BtSave_Click" RenderTransformOrigin="0.055,0.617"/>
         <Button x:Name="BtNewUser" Style="{StaticResource btnBlue}" Content="New user" HorizontalAlignment="Left" Margin="925,20,0,0" VerticalAlignment="Top" Width="115" Height="30" FontSize="14" Background="#AED581" Click="BtNewUser_Click" RenderTransformOrigin="0.852,1.033"/>
 
-        <Image x:Name="ImgCustomer" Source="/Images/employee.png" Margin="943,347,0,-49" RenderTransformOrigin="0.443,0.434" HorizontalAlignment="Left" Width="105">
+        <Image x:Name="ImgCustomer" Source="/Images/purchase.png" Margin="943,347,0,-49" RenderTransformOrigin="0.443,0.434" HorizontalAlignment="Left" Width="105">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -162,11 +157,13 @@
             </Image.RenderTransform>
         </Image>
 
-        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="698,290,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="698,338,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="692,66,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="692,388,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="692,388,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5"/>
+        <Rectangle Fill="#283593" HorizontalAlignment="Left" Height="2" Margin="698,290,0,0" Stroke="#283593" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
+        <Rectangle Fill="#283593" HorizontalAlignment="Left" Height="2" Margin="698,338,0,0" Stroke="#283593" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
+        <Rectangle Fill="#283593" HorizontalAlignment="Left" Height="2" Margin="692,66,0,0" Stroke="#283593" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
+        <Rectangle Fill="#283593" HorizontalAlignment="Left" Height="2" Margin="692,388,0,0" Stroke="#283593" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5"/>
+        <Rectangle Fill="#283593" HorizontalAlignment="Left" Height="2" Margin="692,388,0,0" Stroke="#283593" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5"/>
+        <Image Source="/Images/purchase2.png" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="54" Margin="10,19,0,0"/>
+        <Label x:Name="LbId_Copy"  Foreground="Black" Content="Purchase:" HorizontalAlignment="Left" Margin="50,29,0,0" VerticalAlignment="Top" Height="32" Width="88" FontWeight="Bold" FontSize="16"/>
 
     </Grid>
 </Page>

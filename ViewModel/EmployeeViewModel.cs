@@ -19,14 +19,14 @@ namespace ToyStore.ViewModel
             {
                 _employee = value;
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("Customer"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("Employee"));
             }
         }
 
         public ObservableCollection<EmployeeModel> Employess
         {
             get { return _employees; }
-            set { _employees = value; OnPropertyChanged("Customers"); }
+            set { _employees = value; OnPropertyChanged("Employees"); }
         }
 
         public EmployeeViewModel()
