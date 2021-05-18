@@ -80,6 +80,7 @@
     </ApplicationDefinition>
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\CustomerDAO.cs" />
+    <Compile Include="DAL\EmployeeDAO.cs" />
     <Compile Include="DAL\QueryHelper.cs" />
     <Compile Include="Helper\Validations.cs" />
     <Compile Include="Model\PurchaseModel.cs" />
@@ -87,7 +88,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\PurchaseViewModel.cs" />
     <Compile Include="ViewModel\ToyViewModel.cs" />
-    <Compile Include="ViewModel\WorkerViewModel.cs" />
+    <Compile Include="ViewModel\EmployeeViewModel.cs" />
     <Compile Include="View\CustomerView.xaml.cs">
       <DependentUpon>CustomerView.xaml</DependentUpon>
     </Compile>
@@ -107,8 +108,8 @@
       <DependentUpon>ToyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ValidationView.cs" />
-    <Compile Include="View\WorkerView.xaml.cs">
-      <DependentUpon>WorkerView.xaml</DependentUpon>
+    <Compile Include="View\EmployeeView.xaml.cs">
+      <DependentUpon>EmployeeView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -146,7 +147,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\WorkerView.xaml">
+    <Page Include="View\EmployeeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,7 +155,7 @@
   <ItemGroup>
     <Compile Include="Model\CustomerModel.cs" />
     <Compile Include="Model\ToyModel.cs" />
-    <Compile Include="Model\WorkerModel.cs" />
+    <Compile Include="Model\EmployeeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -200,6 +201,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\employee.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

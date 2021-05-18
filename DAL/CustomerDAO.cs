@@ -45,7 +45,7 @@ namespace ToyStore.DAL
             return CustomerData(customer);
         }
 
-        private List<CustomerModel> GetCliente()
+        private List<CustomerModel> GetCustomer()
         {
             SqlDataReader rd = Cmd.ExecuteReader();
             List<CustomerModel> customers = new List<CustomerModel>();
@@ -72,7 +72,7 @@ namespace ToyStore.DAL
             GetConexao();
             Cmd.CommandText = $"{QueryHelper.GetSelectFrom(_table)}";
 
-            return GetCliente();
+            return GetCustomer();
         }
 
         public List<CustomerModel> Query(string search)
@@ -84,7 +84,7 @@ namespace ToyStore.DAL
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@search", search);
 
-            return GetCliente();
+            return GetCustomer();
         }
 
         public bool Update(CustomerModel customer)

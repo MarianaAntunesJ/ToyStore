@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace ToyStore.View
 {
@@ -49,7 +48,7 @@ namespace ToyStore.View
         private void BtnWorker_Click(object sender, RoutedEventArgs e)
         {
             ControlaGridCursor(e);
-            FrameMain.Navigate(new WorkerView());
+            FrameMain.Navigate(new EmployeeView());
         }
     }
 }

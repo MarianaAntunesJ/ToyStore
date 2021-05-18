@@ -44,8 +44,8 @@
                         </StackPanel>
                     </Button>
                 </StackPanel>
-                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2BAA98" HorizontalAlignment="Left" Margin="10,56,0,9"/>
-                <Rectangle HorizontalAlignment="Center" Height="4" Stroke="#FF70CDC0" Fill="#FF70CDC0"  VerticalAlignment="Top" Width="1082" Margin="-4,66,-4,0"/>
+                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FDD835" HorizontalAlignment="Left" Margin="10,56,0,9"/>
+                <Rectangle HorizontalAlignment="Center" Height="4" Stroke="White" Fill="#212121"  VerticalAlignment="Top" Width="1082" Margin="-4,66,-4,0"/>
             </Grid>
             <Frame x:Name="FrameMain" Height="501" NavigationUIVisibility="Hidden"/>
         </StackPanel>

@@ -1,35 +1,35 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using ToyStore.ViewModel;
 using Xceed.Wpf.Toolkit;
 
 namespace ToyStore.View
 {
-    public partial class CustomerView : Page
+    /// <summary>
+    /// Interação lógica para WorkerView.xam
+    /// </summary>
+    public partial class EmployeeView : Page
     {
-        private CustomerViewModel _customerViewModel { get; set; }
+        private EmployeeViewModel _employeeViewModel { get; set; }
         private ValidationView _validationView { get; set; } = new ValidationView();
 
-        public CustomerView()
+        public EmployeeView()
         {
             InitializeComponent();
-            _customerViewModel = new CustomerViewModel();
-            DataContext = _customerViewModel;
+            _employeeViewModel = new EmployeeViewModel();
+            DataContext = _employeeViewModel;
             CbActive.IsChecked = true;
         }
 
         private void OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.PropertyType == typeof(DateTime))
-                (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy";
-            else if (e.PropertyName == "CPF")
+            if (e.PropertyName == "CPF")
                 e.Column.Visibility = Visibility.Collapsed;
         }
 
         private void TxbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            _customerViewModel.Query(TxbSearch.Text);
+            _employeeViewModel.Query(TxbSearch.Text);
         }
 
         private void FieldValidationViewWrong()
@@ -69,13 +69,13 @@ namespace ToyStore.View
         {
             if (_validationView.ValidatePerson(TxBName.Text, MtxbPhone.Text, MtxbCPF.Text))
             {
-                if (_customerViewModel.Save(MtxbCPF.Text))
+                if (_employeeViewModel.Save(MtxbCPF.Text))
                 {
                     RbFeminine.IsChecked = false;
                     RbMasculine.IsChecked = false;
                     RbOther.IsChecked = false;
                     MtxbCPF.Text = string.Empty;
-                    System.Windows.MessageBox.Show("Customer was salve!", "Salve");
+                    System.Windows.MessageBox.Show("Employee was save!", "Save");
                 }
                 else
                     FieldValidationViewWrong();
@@ -86,29 +86,29 @@ namespace ToyStore.View
 
         private void RbGender_Checked(object sender, RoutedEventArgs e)
         {
-            _customerViewModel.Customer.Gender = (sender as RadioButton).Content.ToString();
+            _employeeViewModel.Employee.Gender = (sender as RadioButton).Content.ToString();
         }
 
         private void DgCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (DgCustomers.Items.IndexOf(DgCustomers.CurrentItem) >= 0)
+            if (DgEmployees.Items.IndexOf(DgEmployees.CurrentItem) >= 0)
             {
-                _customerViewModel.Select(DgCustomers.Items.IndexOf(DgCustomers.CurrentItem));
+                _employeeViewModel.Select(DgEmployees.Items.IndexOf(DgEmployees.CurrentItem));
 
-                MtxbCPF.Text = _customerViewModel.Customer.CPF;
+                MtxbCPF.Text = _employeeViewModel.Employee.CPF;
 
-                if (_customerViewModel.Customer.Gender.Equals("FEMININE"))
+                if (_employeeViewModel.Employee.Gender.Equals("FEMININE"))
                     RbFeminine.IsChecked = true;
-                else if (_customerViewModel.Customer.Gender.Equals("MASCULINE"))
+                else if (_employeeViewModel.Employee.Gender.Equals("MASCULINE"))
                     RbMasculine.IsChecked = true;
-                else if (_customerViewModel.Customer.Gender.Equals("OTHER"))
+                else if (_employeeViewModel.Employee.Gender.Equals("OTHER"))
                     RbOther.IsChecked = true;
             }
         }
 
         private void BtNewUser_Click(object sender, RoutedEventArgs e)
         {
-            _customerViewModel.ClearView();
+            _employeeViewModel.ClearView();
             MtxbCPF.Text = string.Empty;
             CbActive.IsChecked = true;
         }
