@@ -3,6 +3,7 @@
     class PurchaseModel
     {
         public int Id { get; set; }
+        public EmployeeModel Employee { get; set; }
         public CustomerModel Customer { get; set; }
         public ToyModel Toy { get; set; }
         public int Quantity { get; set; }
@@ -13,9 +14,10 @@
         {
         }
 
-        public PurchaseModel(int id, CustomerModel customer, ToyModel toy, int quantity, double total, bool active)
+        public PurchaseModel(int id, EmployeeModel employee, CustomerModel customer, ToyModel toy, int quantity, double total, bool active)
         {
             Id = id;
+            Employee = employee;
             Customer = customer;
             Toy = toy;
             Quantity = quantity;

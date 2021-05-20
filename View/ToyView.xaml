@@ -3,96 +3,20 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
-      xmlns:local="clr-namespace:ToyStore.View"
-      xmlns:viewmodel="clr-namespace:ToyStore.ViewModel"
       mc:Ignorable="d"
-      Height="500" Width="1053"
+      Height="529" Width="1080"
       Title="ToyView">
-
-    <Page.Resources>
-        <viewmodel:CustomerViewModel x:Key="viewModel"/>
-
-        <ControlTemplate x:Key="validationTemplate">
-            <DockPanel>
-                <TextBlock Foreground="Red" FontSize="20" FontWeight="Bold" xml:space="preserve">!</TextBlock>
-                <AdornedElementPlaceholder/>
-            </DockPanel>
-        </ControlTemplate>
-
-        <Style x:Key="DefaultTextBoxStyle" TargetType="TextBox">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Border x:Name="border"
-                                    CornerRadius="3"
-                                    BorderBrush="Gray"
-                                    BorderThickness="2"
-                                    Background="#fff"
->
-                            <ScrollViewer x:Name="PART_ContentHost"
-                                              Focusable="false"
-                                              HorizontalScrollBarVisibility="Hidden"
-                                              VerticalScrollBarVisibility="Hidden"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="#90CAF9"/>
-                                <Setter Property="Foreground" Value="Black" />
-
-                            </Trigger>
-                            <Trigger Property="IsFocused" Value="true">
-                                <Setter Property="Foreground" Value="Black" />
-                                <Setter Property="BorderBrush" TargetName="border" Value="DodgerBlue"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="ToolTipWithErrorMessageOnErrorStyle" TargetType="TextBox" BasedOn="{StaticResource DefaultTextBoxStyle}">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True">
-                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="textBoxInError" TargetType="TextBox" BasedOn="{StaticResource ToolTipWithErrorMessageOnErrorStyle}">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <Border x:Name="border"
-                                    CornerRadius="3"
-                                    BorderBrush="Red"
-                                    BorderThickness="2"
-                                    Background="#fff"
->
-                                    <ScrollViewer x:Name="PART_ContentHost"
-                                              Focusable="false"
-                                              HorizontalScrollBarVisibility="Hidden"
-                                              VerticalScrollBarVisibility="Hidden"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Page.Resources>
 
     <Grid Background="#EEEEEE">
 
-        <TextBox x:Name="TxbSearch" HorizontalAlignment="Left" Height="28" Margin="96,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="573" BorderBrush="Black" TextChanged="TxbSearch_TextChanged">
+        <Label x:Name="LbToy"  Foreground="Black" Content="Toy:" HorizontalAlignment="Left" Margin="35,31,0,0" VerticalAlignment="Top" Height="32" Width="41" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="TxbSearch" HorizontalAlignment="Left" Height="28" Margin="76,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="509" BorderBrush="Black" TextChanged="TxbSearch_TextChanged">
             <TextBox.Style>
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                     <Style.Resources>
                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                             <VisualBrush.Visual>
-                                <Label Content="Search by Id, or name, or CPF" Height="28" Background="White" Width="488" Foreground="Gray" />
+                                <Label Content="Search by Id or Name" FontSize="14" Height="28" Background="White" Width="523" Foreground="Gray" />
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </Style.Resources>
@@ -111,70 +35,34 @@
             </TextBox.Style>
         </TextBox>
 
-        <DataGrid x:Name="DgToys" ItemsSource="{Binding Customers}" Background="White" IsReadOnly="True" Height="426" Margin="10,64,384,0" VerticalAlignment="Top" BorderBrush="#2E7D32" SelectionChanged="DgToys_SelectionChanged" AutoGenerateColumns="True"/>
+        <DataGrid x:Name="DgToys" ItemsSource="{Binding Toys}" Background="White" IsReadOnly="True" Height="415" Margin="10,75,434,0" VerticalAlignment="Top" BorderBrush="#2E7D32" SelectionChanged="DgToys_SelectionChanged" AutoGenerateColumns="True" AutoGeneratingColumn="DgToys_AutoGeneratingColumn"/>
 
-        <Label Name="LbEmployeeInformation" Content="Employee Information:" Foreground="Black" HorizontalAlignment="Left" Margin="765,72,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="40" Width="194"/>
+        <Label Name="LbToyInformation" Content="Toy Information:" Foreground="Black" HorizontalAlignment="Left" Margin="813,66,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Height="33" Width="130"/>
 
-        <Label Name="LbId"  Foreground="Black" Content="Id:" HorizontalAlignment="Left" Margin="692,108,0,0" VerticalAlignment="Top" Height="32" Width="88" FontWeight="Bold" FontSize="16"/>
-        <TextBox Name="TxbId" Text="{Binding Customer.Id}" Style="{StaticResource Textbox2}" Background="White" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="786,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258" FontSize="16"/>
+        <Label Name="LbId"  Foreground="Black" Content="Id:" HorizontalAlignment="Left" Margin="717,102,0,0" VerticalAlignment="Top" Height="32" Width="51" FontWeight="Bold" FontSize="14"/>
+        <TextBox Name="TxbId" Text="{Binding Toy.Id}" Style="{StaticResource Textbox2}" Background="White" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="773,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="14"/>
 
-        <Label x:Name="LbName" Foreground="Black" Content="Name:" HorizontalAlignment="Left" Margin="692,134,0,0" VerticalAlignment="Top" Height="32" Width="88" FontWeight="Bold" FontSize="16"/>
-        <TextBox x:Name="TxBName" Text="{Binding Customer.Name}" Style="{StaticResource Textbox1}" Background="White" HorizontalAlignment="Left" Height="26" Margin="786,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258"/>
+        <Label x:Name="LbName" Foreground="Black" Content="Name:" HorizontalAlignment="Left" Margin="717,134,0,0" VerticalAlignment="Top" Height="32" Width="51" FontWeight="Bold" FontSize="14"/>
+        <TextBox x:Name="TxBName" Text="{Binding Toy.Name}" Style="{StaticResource Textbox1}" Background="White" HorizontalAlignment="Left" Height="26" Margin="773,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254"/>
 
-        <Label x:Name="LbPhone" Foreground="Black" Content="Phone:" HorizontalAlignment="Left" Margin="692,166,0,0" VerticalAlignment="Top" Height="30" Width="88" FontWeight="Bold" FontSize="16"/>
-        <wpfx:MaskedTextBox x:Name="MtxbPhone" Text="{Binding Customer.Phone}" Style="{StaticResource Textbox1}" Width="258" Height="28" Mask="(00) 00000-0000" HorizontalAlignment="Left" Margin="786,170,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="MtxbPhone_PreviewMouseLeftButtonUp"/>
+        <Label x:Name="LbAmountOfStock" Foreground="Black" Content="Amount of stock:" HorizontalAlignment="Left" Margin="805,168,0,0" VerticalAlignment="Top" Height="30" Width="138" FontWeight="Bold" FontSize="14"/>
+        <TextBox x:Name="TxbAmountOfStock" Text="{Binding Toy.AmountOfStock}" Style="{StaticResource Textbox1}" Width="98" Height="28" HorizontalAlignment="Left" Margin="820,198,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonDown="TxbAmountOfStock_PreviewMouseLeftButtonDown" />
 
-        <Label x:Name="LbCPF" Foreground="Black" Content="CPF:" HorizontalAlignment="Left" Margin="692,192,0,0" VerticalAlignment="Top" Height="32" Width="86" FontWeight="Bold" FontSize="16"/>
-        <wpfx:MaskedTextBox x:Name="MtxbCPF" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource textBoxInError}" Width="258" Height="26" 
-                            Mask="000,000,000-00" HorizontalAlignment="Left" Margin="786,200,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="MtxbPhone_PreviewMouseLeftButtonUp" FontSize="16">
-            <wpfx:MaskedTextBox.Text>
-                <Binding Path="Customer.CPF"  Source="{StaticResource viewModel}"
-                         UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <local:ValidationView/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </wpfx:MaskedTextBox.Text>
-        </wpfx:MaskedTextBox>
+        <Rectangle HorizontalAlignment="Left" Height="114" Stroke="Black" VerticalAlignment="Top" Width="75" Margin="838,265,0,0"/>
+        <Label x:Name="LbToyImage" Foreground="Black" Content="Toy image:" HorizontalAlignment="Left" Margin="830,230,0,0" VerticalAlignment="Top" Height="30" Width="83" FontWeight="Bold" FontSize="14" RenderTransformOrigin="1.096,0.733"/>
+        <Image Name="ImgToy" Source="{Binding Toy.Image}" HorizontalAlignment="Left" Height="114" Margin="838,265,0,0" VerticalAlignment="Top" Width="75" MouseDown="ImgToy_MouseDown"/>
 
-        <Label x:Name="LbBirthday" Foreground="Black" Content="Birthday:" HorizontalAlignment="Left" Margin="698,296,0,0" VerticalAlignment="Top" Height="32" Width="82" FontWeight="Bold" FontSize="16"/>
-        <DatePicker x:Name="DpBirthday" SelectedDate="{Binding Customer.Birthday, StringFormat=d}" HorizontalAlignment="Left" Margin="786,300,0,0" VerticalAlignment="Top" Width="196" Background="#00000000" BorderBrush="Black" Height="28" FontSize="16"/>
+        <Label x:Name="LbStatus" Foreground="Black" Content="Status:" HorizontalAlignment="Left" Margin="800,406,0,0" VerticalAlignment="Top" Height="30" Width="64" FontWeight="Bold" FontSize="14"/>
+        <CheckBox x:Name="CbActive" IsChecked="{Binding Toy.Active}" Content="Active" HorizontalAlignment="Left" Margin="869,408,0,0" VerticalAlignment="Top" Height="22" Width="74" FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.153,0.53"/>
 
-        <Label x:Name="LbStatus" Foreground="Black" Content="Status:" HorizontalAlignment="Left" Margin="698,352,0,0" VerticalAlignment="Top" Height="30" Width="64" FontWeight="Bold" FontSize="16"/>
-        <CheckBox x:Name="CbActive" IsChecked="{Binding Customer.Active}" Content="Active" HorizontalAlignment="Left" Margin="786,358,0,0" VerticalAlignment="Top" Height="22" Width="74" FontWeight="Bold" FontSize="16" RenderTransformOrigin="0.153,0.53"/>
+        <Button x:Name="BtSave" Style="{StaticResource btnBlue}" Content="Save" HorizontalAlignment="Left" Margin="820,464,0,0" VerticalAlignment="Top" Width="110" Height="30" FontSize="14" Click="BtSave_Click" RenderTransformOrigin="0.055,0.617"/>
+        <Button x:Name="BtNewToy" Style="{StaticResource btnBlue}" Content="New toy" HorizontalAlignment="Left" Margin="928,26,0,0" VerticalAlignment="Top" Width="115" Height="30" FontSize="14" Background="#AED581" Click="BtNewUser_Click" RenderTransformOrigin="0.852,1.033"/>
 
-        <Button x:Name="BtSave" Style="{StaticResource btnBlue}" Content="Save" HorizontalAlignment="Left" Margin="786,426,0,0" VerticalAlignment="Top" Width="110" Height="30" FontSize="14" Click="BtSave_Click" RenderTransformOrigin="0.055,0.617"/>
-        <Button x:Name="BtNewUser" Style="{StaticResource btnBlue}" Content="New user" HorizontalAlignment="Left" Margin="925,20,0,0" VerticalAlignment="Top" Width="115" Height="30" FontSize="14" Background="#AED581" Click="BtNewUser_Click" RenderTransformOrigin="0.852,1.033"/>
+        <Image Source="/Images/Toy2.png" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="42" Margin="12,30,0,0" RenderTransformOrigin="0.5,0.5"/>
+        <Image x:Name="ImgCustomer" Source="/Images/Toy.png" Margin="1026,443,0,0" RenderTransformOrigin="0.443,0.434" HorizontalAlignment="Left" Width="45"/>
 
-        <Image x:Name="ImgCustomer" Source="/Images/Toy.png" Margin="988,374,0,-12" RenderTransformOrigin="0.443,0.434" HorizontalAlignment="Left" Width="62">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.037"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-
-
-
-        <Rectangle Fill="#2E7D32" HorizontalAlignment="Left" Height="2" Margin="698,290,0,0" Stroke="#2E7D32" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#2E7D32" HorizontalAlignment="Left" Height="2" Margin="698,338,0,0" Stroke="#2E7D32" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#2E7D32" HorizontalAlignment="Left" Height="2" Margin="692,66,0,0"  Stroke="#2E7D32" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#2E7D32" HorizontalAlignment="Left" Height="2" Margin="692,388,0,0" Stroke="#2E7D32" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#2E7D32" HorizontalAlignment="Left" Height="2" Margin="692,388,0,0" Stroke="#2E7D32" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5"/>
-        <Image Source="/Images/Toy2.png" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="56" Margin="17,15,0,0" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-108.103"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Label x:Name="LbId_Copy"  Foreground="Black" Content="Toy:" HorizontalAlignment="Left" Margin="51,31,0,0" VerticalAlignment="Top" Height="32" Width="56" FontWeight="Bold" FontSize="16"/>
-
+        <Rectangle Fill="#2E7D32" HorizontalAlignment="Left" Height="2" Margin="688,401,0,0" Stroke="#2E7D32" VerticalAlignment="Top" Width="355" RenderTransformOrigin="0.5,0.5"/>
+        <Rectangle Fill="#2E7D32" HorizontalAlignment="Left" Height="2" Margin="682,61,0,0"  Stroke="#2E7D32" VerticalAlignment="Top" Width="361" RenderTransformOrigin="0.5,0.5"/>
+        
     </Grid>
 </Page>

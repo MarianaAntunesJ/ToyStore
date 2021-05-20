@@ -9,45 +9,29 @@
         Title="MenuView" Height="600" Width="1080" WindowStartupLocation="CenterScreen">
 
     <Viewbox>
-        <StackPanel Background="WhiteSmoke" Height="572">
+        <StackPanel Background="WhiteSmoke" Width="1080">
             <Grid Height="45" Background="#FAFAFA">
 
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,10,-16" Height="61">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,10,-16" Grid.ColumnSpan="2" Height="61">
                     <Button x:Name="BtnHome" Uid="0" Width="140" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" FontWeight="Bold" Margin="0,10,0,25" Click="BtnHome_Click" Height="Auto">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/homeIcon.png" Height="15" Width="34" />
                             <Label Padding="0" Content="HOME" Width="47" FontSize="11" Height="15"/>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="BtnPurchase" Uid="1" Width="140" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" FontWeight="Bold" Margin="0,10,0,25" Click="BtnPurchase_Click" Height="Auto">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/purchaseIcon.png" Height="15" Width="34" />
-                            <Label Padding="0" Content="PURCHASE" Width="74" FontSize="11" Height="15"/>
-                        </StackPanel>
-                    </Button>
-                    <Button x:Name="BtnToy" Uid="2" Width="140" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" FontWeight="Bold" Margin="0,10,0,25" Click="BtnToy_Click" Height="Auto">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/toyIcon.png" Height="15" Width="34" />
-                            <Label Padding="0" Content="TOY" Width="30" FontSize="11" Height="15"/>
-                        </StackPanel>
-                    </Button>
-                    <Button x:Name="BtnCustomer" Uid="3" Width="140" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" Click="BtnCustomer_Click" FontWeight="Bold" Margin="0,10,0,25" Height="Auto">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/customerIcon.png" Height="15" Width="34" />
-                            <Label Padding="0" Content="CUSTOMER" Width="75" FontSize="11" Height="15"/>
-                        </StackPanel>
-                    </Button>
-                    <Button x:Name="BtnWorker" Uid="4" Width="140" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" FontWeight="Bold" Margin="0,10,0,25" Click="BtnWorker_Click" Height="Auto">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/workerIcon.png" Height="15" Width="34" />
-                            <Label Padding="0" Content="WORKER" Width="63" FontSize="11" Height="15"/>
-                        </StackPanel>
-                    </Button>
+                    <Button x:Name="BtnPurchase" Content="PURCHASE" FontSize="11"  Uid="1" Width="140" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" FontWeight="Bold" Margin="0,10,0,25" Click="BtnPurchase_Click" Height="Auto"/>
+                    <Button x:Name="BtnToy" Content="TOY" FontSize="11" Uid="2" Width="140" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" FontWeight="Bold" Margin="0,10,0,25" Click="BtnToy_Click" Height="Auto"/>
+                    <Button x:Name="BtnCustomer" Content="CUSTOMER" FontSize="11" Uid="3" Width="140" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" Click="BtnCustomer_Click" FontWeight="Bold" Margin="0,10,0,25" Height="Auto"/>
+                    <Button x:Name="BtnEmployee" Content="EMPLOYEE" FontSize="11" Uid="4" Width="140" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#1A1406" FontWeight="Bold" Margin="0,10,0,25" Click="BtnWorker_Click" Height="Auto"/>
                 </StackPanel>
-                <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FDD835" HorizontalAlignment="Left" Margin="0,30,0,0"/>
-                <Rectangle HorizontalAlignment="Center" Height="4" Stroke="White" Fill="#FFD600"  VerticalAlignment="Top" Width="1092" Margin="-11,45,-7,-4"/>
+                <Grid x:Name="GridCursor" Width="140" Height="5" Background="#FDD835" HorizontalAlignment="Left" Margin="0,30,0,0"/>
             </Grid>
-            <Frame x:Name="FrameMain" Height="501" NavigationUIVisibility="Hidden"/>
+            <Grid Height="3">
+                <Rectangle HorizontalAlignment="Center" Height="4" Stroke="White" Fill="#1A1406"  VerticalAlignment="Top" Width="1080" Margin="0,-1,0,0"/>
+            </Grid>
+            <Grid Height="527">
+                <Frame x:Name="FrameMain" Width="1080" Height="526" NavigationUIVisibility="Hidden"/>
+            </Grid>
         </StackPanel>
     </Viewbox>
 </Window>

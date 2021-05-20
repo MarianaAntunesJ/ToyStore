@@ -23,6 +23,7 @@ namespace ToyStore.DAL
 
         private bool PurchaseData(PurchaseModel purchase)
         {
+            Cmd.Parameters.AddWithValue("@Employee", purchase.Employee);
             Cmd.Parameters.AddWithValue("@Customer", purchase.Customer);
             Cmd.Parameters.AddWithValue("@Toy", purchase.Toy);
             Cmd.Parameters.AddWithValue("@Quantity", purchase.Quantity);
@@ -38,7 +39,7 @@ namespace ToyStore.DAL
         public bool Insert(PurchaseModel purchase)
         {
             GetConexao();
-            Cmd.CommandText = $@"{QueryHelper.GetInsertInto(_table)} (@Customer, @Toy, @Quantity, @Total, @Active)";
+            Cmd.CommandText = $@"{QueryHelper.GetInsertInto(_table)} (@Employee, @Customer, @Toy, @Quantity, @Total, @Active)";
             Cmd.Parameters.Clear();
             return PurchaseData(purchase);
         }
@@ -52,6 +53,7 @@ namespace ToyStore.DAL
             {
                 PurchaseModel purchase = new PurchaseModel(
                         (int)rd[nameof(PurchaseModel.Id)],
+                        (EmployeeModel)rd[nameof(PurchaseModel.Employee)],
                         (CustomerModel)rd[nameof(PurchaseModel.Customer)],
                         (ToyModel)rd[nameof(PurchaseModel.Toy)],
                         (int)rd[nameof(PurchaseModel.Quantity)],
@@ -88,7 +90,7 @@ namespace ToyStore.DAL
         public bool Update(PurchaseModel purchase)
         {
             GetConexao();
-            Cmd.CommandText = $@"{QueryHelper.GetUpdateSet(_table)} Customer = @Customer, Toy = @Toy, Quantity = @Quantity, Total = @Total, Active = @Active  WHERE Id = @Id";
+            Cmd.CommandText = $@"{QueryHelper.GetUpdateSet(_table)} Employee = @Employee, Customer = @Customer, Toy = @Toy, Quantity = @Quantity, Total = @Total, Active = @Active  WHERE Id = @Id";
 
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@Id", purchase.Id);

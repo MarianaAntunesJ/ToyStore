@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:ToyStore.View"
       xmlns:viewmodel="clr-namespace:ToyStore.ViewModel"
       mc:Ignorable="d"
-      Title="EmployeeView" Height="500" Width="1053">
+      Title="EmployeeView" Height="529" Width="1080">
 
     <Page.Resources>
         <viewmodel:CustomerViewModel x:Key="viewModel"/>
@@ -85,7 +85,10 @@
 
     <Grid Background="#EEEEEE">
 
-        <TextBox x:Name="TxbSearch" HorizontalAlignment="Left" Height="28" Margin="10,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="488" BorderBrush="Black" TextChanged="TxbSearch_TextChanged">
+        <Image Source="/Images/employee2.png" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="35" Margin="10,34,0,0" RenderTransformOrigin="0.657,0.889"/>
+        <Label x:Name="LbEmployee"  Foreground="Black" Content="Employee:" HorizontalAlignment="Left" Margin="36,33,0,0" VerticalAlignment="Top" Height="32" Width="85" FontWeight="Bold" FontSize="14"/>
+
+        <TextBox x:Name="TxbSearch" HorizontalAlignment="Left" Height="28" Margin="116,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="488" BorderBrush="Black" TextChanged="TxbSearch_TextChanged">
             <TextBox.Style>
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                     <Style.Resources>
@@ -110,22 +113,22 @@
             </TextBox.Style>
         </TextBox>
 
-        <DataGrid x:Name="DgEmployees" ItemsSource="{Binding Customers}" Background="White" IsReadOnly="True" Height="426" Margin="10,64,384,0" VerticalAlignment="Top" BorderBrush="#FF7043" SelectionChanged="DgCustomers_SelectionChanged" AutoGenerateColumns="True" AutoGeneratingColumn="OnAutoGeneratingColumn"/>
+        <DataGrid x:Name="DgEmployees" ItemsSource="{Binding Customers}" Background="White" IsReadOnly="True" Height="426" Margin="10,72,405,0" VerticalAlignment="Top" BorderBrush="#FF7043" SelectionChanged="DgCustomers_SelectionChanged" AutoGenerateColumns="True" AutoGeneratingColumn="OnAutoGeneratingColumn"/>
 
-        <Label Name="LbEmployeeInformation" Content="Employee Information:" Foreground="Black" HorizontalAlignment="Left" Margin="765,72,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="40" Width="194"/>
+        <Label Name="LbEmployeeInformation" Content="Employee Information:" Foreground="Black" HorizontalAlignment="Left" Margin="787,74,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Height="29" Width="175"/>
 
-        <Label Name="LbId"  Foreground="Black" Content="Id:" HorizontalAlignment="Left" Margin="692,108,0,0" VerticalAlignment="Top" Height="32" Width="88" FontWeight="Bold" FontSize="16"/>
-        <TextBox Name="TxbId" Text="{Binding Customer.Id}" Style="{StaticResource Textbox2}" Background="White" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="786,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258" FontSize="16"/>
+        <Label Name="LbId"  Foreground="Black" Content="Id:" HorizontalAlignment="Left" Margin="705,103,0,0" VerticalAlignment="Top" Height="26" Width="58" FontWeight="Bold" FontSize="14"/>
+        <TextBox Name="TxbId" Text="{Binding Employee.Id}" Style="{StaticResource Textbox2}" Background="White" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="767,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontSize="14"/>
 
-        <Label x:Name="LbName" Foreground="Black" Content="Name:" HorizontalAlignment="Left" Margin="692,134,0,0" VerticalAlignment="Top" Height="32" Width="88" FontWeight="Bold" FontSize="16"/>
-        <TextBox x:Name="TxBName" Text="{Binding Customer.Name}" Style="{StaticResource Textbox1}" Background="White" HorizontalAlignment="Left" Height="26" Margin="786,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258"/>
+        <Label x:Name="LbName" Foreground="Black" Content="Name:" HorizontalAlignment="Left" Margin="704,132,0,0" VerticalAlignment="Top" Height="32" Width="58" FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.537,0.772"/>
+        <TextBox x:Name="TxBName" Text="{Binding Customer.Name}" Style="{StaticResource Textbox1}" Background="White" HorizontalAlignment="Left" Height="26" Margin="767,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258"/>
 
-        <Label x:Name="LbPhone" Foreground="Black" Content="Phone:" HorizontalAlignment="Left" Margin="692,166,0,0" VerticalAlignment="Top" Height="30" Width="88" FontWeight="Bold" FontSize="16"/>
-        <wpfx:MaskedTextBox x:Name="MtxbPhone" Text="{Binding Customer.Phone}" Style="{StaticResource Textbox1}" Width="258" Height="28" Mask="(00) 00000-0000" HorizontalAlignment="Left" Margin="786,170,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="MtxbPhone_PreviewMouseLeftButtonUp"/>
+        <Label x:Name="LbPhone" Foreground="Black" Content="Phone:" HorizontalAlignment="Left" Margin="706,193,0,0" VerticalAlignment="Top" Height="30" Width="58" FontWeight="Bold" FontSize="14"/>
+        <wpfx:MaskedTextBox x:Name="MtxbPhone" Text="{Binding Customer.Phone}" Style="{StaticResource Textbox1}" Width="130" Height="28" Mask="(00) 00000-0000" HorizontalAlignment="Left" Margin="769,193,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="MtxbPhone_PreviewMouseLeftButtonUp"/>
 
-        <Label x:Name="LbCPF" Foreground="Black" Content="CPF:" HorizontalAlignment="Left" Margin="692,192,0,0" VerticalAlignment="Top" Height="32" Width="86" FontWeight="Bold" FontSize="16"/>
-        <wpfx:MaskedTextBox x:Name="MtxbCPF" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource textBoxInError}" Width="258" Height="26" 
-                            Mask="000,000,000-00" HorizontalAlignment="Left" Margin="786,200,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="MtxbPhone_PreviewMouseLeftButtonUp" FontSize="16">
+        <Label x:Name="LbCPF" Foreground="Black" Content="CPF:" HorizontalAlignment="Left" Margin="706,226,0,0" VerticalAlignment="Top" Height="32" Width="57" FontWeight="Bold" FontSize="14"/>
+        <wpfx:MaskedTextBox x:Name="MtxbCPF" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource textBoxInError}" Width="130" Height="26" 
+                            Mask="000,000,000-00" HorizontalAlignment="Left" Margin="769,226,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="MtxbPhone_PreviewMouseLeftButtonUp" FontSize="16">
             <wpfx:MaskedTextBox.Text>
                 <Binding Path="Customer.CPF"  Source="{StaticResource viewModel}"
                          UpdateSourceTrigger="PropertyChanged">
@@ -136,36 +139,32 @@
             </wpfx:MaskedTextBox.Text>
         </wpfx:MaskedTextBox>
 
-        <Label x:Name="LbGender" Foreground="Black" Content="Gender:" HorizontalAlignment="Left" Margin="848,228,0,0" VerticalAlignment="Top" Height="32" Width="72" FontWeight="Bold" FontSize="16"/>
-        <RadioButton x:Name="RbFeminine" GroupName="RbGender" Content="FEMININE" HorizontalAlignment="Left" Margin="728,262,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
-        <RadioButton x:Name="RbMasculine" GroupName="RbGender" Content="MASCULINE" HorizontalAlignment="Left" Margin="832,262,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
-        <RadioButton x:Name="RbOther" GroupName="RbGender" Content="OTHER" HorizontalAlignment="Left" Margin="950,262,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="RbGender_Checked"/>
+        <Label x:Name="LbEmail" Foreground="Black" Content="Email:" HorizontalAlignment="Left" Margin="705,162,0,0" VerticalAlignment="Top" Height="32" Width="58" FontWeight="Bold" FontSize="14"/>
+        <TextBox x:Name="TxBEmail" Text="{Binding Customer.Name}" Style="{StaticResource Textbox1}" Background="White" HorizontalAlignment="Left" Height="26" Margin="768,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258"/>
 
-        <Label x:Name="LbBirthday" Foreground="Black" Content="Birthday:" HorizontalAlignment="Left" Margin="698,296,0,0" VerticalAlignment="Top" Height="32" Width="82" FontWeight="Bold" FontSize="16"/>
-        <DatePicker x:Name="DpBirthday" SelectedDate="{Binding Customer.Birthday, StringFormat=d}" HorizontalAlignment="Left" Margin="786,300,0,0" VerticalAlignment="Top" Width="196" Background="#00000000" BorderBrush="Black" Height="28" FontSize="16"/>
+        <Label x:Name="LbGender" Foreground="Black" Content="Gender:" HorizontalAlignment="Left" Margin="854,254,0,0" VerticalAlignment="Top" Height="27" Width="72" FontWeight="Bold" FontSize="15"/>
+        <RadioButton x:Name="RbFeminine" GroupName="RbGender" Content="FEMININE" HorizontalAlignment="Left" Margin="742,286,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Checked="RbGender_Checked"/>
+        <RadioButton x:Name="RbMasculine" GroupName="RbGender" Content="MASCULINE" HorizontalAlignment="Left" Margin="846,286,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Checked="RbGender_Checked"/>
+        <RadioButton x:Name="RbOther" GroupName="RbGender" Content="OTHER" HorizontalAlignment="Left" Margin="964,286,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Checked="RbGender_Checked"/>
 
-        <Label x:Name="LbStatus" Foreground="Black" Content="Status:" HorizontalAlignment="Left" Margin="698,352,0,0" VerticalAlignment="Top" Height="30" Width="64" FontWeight="Bold" FontSize="16"/>
-        <CheckBox x:Name="CbActive" IsChecked="{Binding Customer.Active}" Content="Active" HorizontalAlignment="Left" Margin="786,358,0,0" VerticalAlignment="Top" Height="22" Width="74" FontWeight="Bold" FontSize="16" RenderTransformOrigin="0.153,0.53"/>
+        <Label x:Name="LbLogin" Foreground="Black" Content="Login:" HorizontalAlignment="Left" Margin="862,315,0,0" VerticalAlignment="Top" Height="31" Width="54" FontWeight="Bold" FontSize="15"/>
+        <Label x:Name="LbPassword" Foreground="Black" Content="Password:" HorizontalAlignment="Left" Margin="764,382,0,0" VerticalAlignment="Top" Height="32" Width="77" FontWeight="Bold" FontSize="14"/>
+        <TextBox x:Name="TxPassword" Text="{Binding Customer.Name}" Style="{StaticResource Textbox1}" Background="White" HorizontalAlignment="Left" Height="26" Margin="846,382,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
+        <Label x:Name="LbUsername" Foreground="Black" Content="Username:" HorizontalAlignment="Left" Margin="764,351,0,0" VerticalAlignment="Top" Height="32" Width="77" FontWeight="Bold" FontSize="14"/>
+        <TextBox x:Name="TxBUsername" Text="{Binding Customer.Name}" Style="{StaticResource Textbox1}" Background="White" HorizontalAlignment="Left" Height="26" Margin="846,351,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
 
-        <Button x:Name="BtSave" Style="{StaticResource btnBlue}" Content="Save" HorizontalAlignment="Left" Margin="786,426,0,0" VerticalAlignment="Top" Width="110" Height="30" FontSize="14" Click="BtSave_Click" RenderTransformOrigin="0.055,0.617"/>
-        <Button x:Name="BtNewUser" Style="{StaticResource btnBlue}" Content="New user" HorizontalAlignment="Left" Margin="925,20,0,0" VerticalAlignment="Top" Width="115" Height="30" FontSize="14" Background="#AED581" Click="BtNewUser_Click" RenderTransformOrigin="0.852,1.033"/>
+        <Label x:Name="LbStatus" Foreground="Black" Content="Status:" HorizontalAlignment="Left" Margin="816,426,0,0" VerticalAlignment="Top" Height="30" Width="64" FontWeight="Bold" FontSize="14"/>
+        <CheckBox x:Name="CbActive" IsChecked="{Binding Customer.Active}" Content="Active" HorizontalAlignment="Left" Margin="880,428,0,0" VerticalAlignment="Top" Height="22" Width="74" FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.153,0.53"/>
 
-        <Image x:Name="ImgCustomer" Source="/Images/employee.png" Margin="943,347,0,-49" RenderTransformOrigin="0.443,0.434" HorizontalAlignment="Left" Width="105">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.037"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
+        <Button x:Name="BtSave" Style="{StaticResource btnBlue}" Content="Save" HorizontalAlignment="Left" Margin="827,461,0,0" VerticalAlignment="Top" Width="110" Height="30" FontSize="14" Click="BtSave_Click" RenderTransformOrigin="0.055,0.617"/>
+        <Button x:Name="BtNewUser" Style="{StaticResource btnBlue}" Content="New user" HorizontalAlignment="Left" Margin="932,31,0,0" VerticalAlignment="Top" Width="115" Height="30" FontSize="14" Background="#AED581" Click="BtNewUser_Click" RenderTransformOrigin="0.852,1.033"/>
 
-        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="698,290,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="698,338,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="692,66,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="692,388,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="692,388,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5"/>
+        <Image x:Name="ImgCustomer" Source="/Images/employee.png" Margin="1008,446,0,0" RenderTransformOrigin="0.443,0.434" HorizontalAlignment="Left" Width="72"/>
+
+        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="705,309,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
+        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="704,419,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="342" RenderTransformOrigin="0.5,0.5"/>
+        <Rectangle Fill="#FF7043" HorizontalAlignment="Left" Height="2" Margin="693,72,0,0" Stroke="#FF7043" VerticalAlignment="Top" Width="354" RenderTransformOrigin="0.5,0.5"/>
+
 
     </Grid>
 </Page>

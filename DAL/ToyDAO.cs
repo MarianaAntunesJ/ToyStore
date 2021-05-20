@@ -25,6 +25,7 @@ namespace ToyStore.DAL
         {
             Cmd.Parameters.AddWithValue("@Name", toy.Name);
             Cmd.Parameters.AddWithValue("@AmountOfStock", toy.AmountOfStock);
+            Cmd.Parameters.AddWithValue("@Image", toy.Image);
             Cmd.Parameters.AddWithValue("@Active", toy.Active);
 
             if (Cmd.ExecuteNonQuery() == 1)
@@ -36,7 +37,7 @@ namespace ToyStore.DAL
         public bool Insert(ToyModel toy)
         {
             GetConexao();
-            Cmd.CommandText = $@"{QueryHelper.GetInsertInto(_table)} (@Name, @AmountOfStock, @Active)";
+            Cmd.CommandText = $@"{QueryHelper.GetInsertInto(_table)} (@Name, @AmountOfStock, @Image, @Active)";
             Cmd.Parameters.Clear();
             return ToyData(toy);
         }
@@ -52,6 +53,7 @@ namespace ToyStore.DAL
                         (int)rd[nameof(ToyModel.Id)],
                         (string)rd[nameof(ToyModel.Name)],
                         (int)rd[nameof(ToyModel.AmountOfStock)],
+                        (byte[])rd[nameof(ToyModel.Image)],
                         (bool)rd[nameof(ToyModel.Active)]);
 
                 toys.Add(toy);
@@ -83,7 +85,7 @@ namespace ToyStore.DAL
         public bool Update(ToyModel toy)
         {
             GetConexao();
-            Cmd.CommandText = $@"{QueryHelper.GetUpdateSet(_table)} Name = @Name, AmountOfStock = @AmountOfStock, Active = @Active  WHERE Id = @Id";
+            Cmd.CommandText = $@"{QueryHelper.GetUpdateSet(_table)} Name = @Name, AmountOfStock = @AmountOfStock, Image = @Image, Active = @Active  WHERE Id = @Id";
 
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@Id", toy.Id);
