@@ -5,7 +5,7 @@ using ToyStore.Model;
 
 namespace ToyStore.ViewModel
 {
-    class PurchaseViewModel : INotifyPropertyChanged
+    public class PurchaseViewModel : INotifyPropertyChanged
     {
         private PurchaseModel _purchase { get; set; }
         private PurchaseDAO _purchaseDAO;
@@ -53,6 +53,21 @@ namespace ToyStore.ViewModel
                 return true;
             }
             return false;
+        }
+
+        public void InsertCustomer(CustomerModel customer)
+        {
+            _purchase.Customer = customer;
+        }
+
+        public void InsertCustomer(ObservableCollection<ToyModel> toys)
+        {
+            _purchase.Toys = toys;
+        }
+
+        public void InsertToys(ObservableCollection<ToyModel> toys)
+        {
+            _purchase.Toys = toys;
         }
 
         private void UpdateList()

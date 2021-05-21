@@ -1,17 +1,16 @@
-﻿using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using ToyStore.ViewModel;
 using Xceed.Wpf.Toolkit;
 
 namespace ToyStore.View
 {
-    /// <summary>
-    /// Interação lógica para PurchaseView.xam
-    /// </summary>
     public partial class PurchaseView : Page
     {
         private PurchaseViewModel _purchaseViewModel { get; set; }
+        public object NavigationCacheMode { get; }
+        private CustomersListView _customersListView;
+        private ToysListView _toysListView;
         private ValidationView _validationView { get; set; } = new ValidationView();
 
         public PurchaseView()
@@ -55,6 +54,20 @@ namespace ToyStore.View
         if (nome.MaskedTextProvider.AssignedEditPositionCount == 0)
             nome.CaretIndex = 0;
     }
-}
+
+        private void BtnCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            if (_customersListView == null)
+                _customersListView = new CustomersListView(_purchaseViewModel, this);
+            NavigationService.Navigate(_customersListView);
+        }
+
+        private void BtnToys_Click(object sender, RoutedEventArgs e)
+        {
+            if (_toysListView == null)
+                _toysListView = new ToysListView(_purchaseViewModel, this);
+            NavigationService.Navigate(_toysListView);
+        }
+    }
 }
 

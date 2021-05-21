@@ -1,0 +1,20 @@
+﻿<Page x:Class="ToyStore.View.ToysListView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ToyStore.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="529" d:DesignWidth="1080"
+      Title="ToysListView">
+
+    <Grid Background="#EEEEEE">
+        <Label Name="LbCustomersList" Content="Toys list:" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,35,0,0" FontWeight="Bold"/>
+        <TextBox Name="TxBSearch" HorizontalAlignment="Left" Height="23" Margin="119,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="410" Background="White" TextChanged="TxBSearch_TextChanged" />
+        <DataGrid Name="DgAllToys" ItemsSource="{Binding AllToys}" HorizontalAlignment="Left" Height="390" Margin="29,70,0,0" VerticalAlignment="Top" Width="500" SelectionChanged="DgAllToys_SelectionChanged"/>
+        <Button x:Name="BtnSave" Content="Save" Style="{StaticResource btnBlue}" HorizontalAlignment="Left" Margin="585,487,0,0" VerticalAlignment="Top" Width="116" Click="BtnSalvar"/>
+        <Button x:Name="BtnCancel" Content="Cancel" Style="{StaticResource btnBlue}" Background="#B8E0E2" HorizontalAlignment="Left" Margin="425,487,0,0" VerticalAlignment="Top" Width="116" Click="BtnCancelar"/>
+        <DataGrid x:Name="DgSelectedToys" HorizontalAlignment="Left" Height="390" Margin="557,70,0,0" VerticalAlignment="Top" Width="500" SelectionChanged="DgSelectedToys_SelectionChanged"/>
+
+    </Grid>
+</Page>

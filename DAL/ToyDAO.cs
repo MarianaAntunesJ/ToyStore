@@ -42,7 +42,7 @@ namespace ToyStore.DAL
             return ToyData(toy);
         }
 
-        private List<ToyModel> GetToy()
+        private List<ToyModel> GetToys()
         {
             SqlDataReader rd = Cmd.ExecuteReader();
             List<ToyModel> toys = new List<ToyModel>();
@@ -62,12 +62,36 @@ namespace ToyStore.DAL
             return toys;
         }
 
+        public ToyModel GetToy(int id)
+        {
+            GetConexao();
+            Cmd.CommandText = $"{QueryHelper.GetSelectFrom(_table)} WHERE Id = @id";
+
+            Cmd.Parameters.Clear();
+            Cmd.Parameters.AddWithValue("@Id", id);
+
+            SqlDataReader rd = Cmd.ExecuteReader();
+            ToyModel toy = new ToyModel();
+
+            while (rd.Read())
+            {
+                toy = new ToyModel(
+                        (int)rd[nameof(ToyModel.Id)],
+                        (string)rd[nameof(ToyModel.Name)],
+                        (int)rd[nameof(ToyModel.AmountOfStock)],
+                        (byte[])rd[nameof(ToyModel.Image)],
+                        (bool)rd[nameof(ToyModel.Active)]);
+            }
+            rd.Close();
+            return toy;
+        }
+
         public List<ToyModel> ToList()
         {
             GetConexao();
             Cmd.CommandText = $"{QueryHelper.GetSelectFrom(_table)}";
 
-            return GetToy();
+            return GetToys();
         }
 
         public List<ToyModel> Query(string search)
@@ -79,7 +103,7 @@ namespace ToyStore.DAL
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@search", search);
 
-            return GetToy();
+            return GetToys();
         }
 
         public bool Update(ToyModel toy)

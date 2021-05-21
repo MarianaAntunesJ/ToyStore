@@ -7,7 +7,7 @@
       Height="529" Width="1080"
       Title="ToyView">
 
-    <Grid Background="#EEEEEE">
+    <Grid Background="WhiteSmoke">
 
         <Label x:Name="LbToy"  Foreground="Black" Content="Toy:" HorizontalAlignment="Left" Margin="35,31,0,0" VerticalAlignment="Top" Height="32" Width="41" FontWeight="Bold" FontSize="16"/>
         <TextBox x:Name="TxbSearch" HorizontalAlignment="Left" Height="28" Margin="76,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="509" BorderBrush="Black" TextChanged="TxbSearch_TextChanged">

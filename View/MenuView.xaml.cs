@@ -8,6 +8,7 @@ namespace ToyStore.View
         public MenuView()
         {
             InitializeComponent();
+            FrameMain.Content = new MainView();
         }
 
         private void ControlaGridCursor(RoutedEventArgs e)

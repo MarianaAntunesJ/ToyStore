@@ -83,7 +83,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="#EEEEEE">
+    <Grid Background="WhiteSmoke">
 
         <Image Source="/Images/customer2.png" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="35" Margin="10,34,0,0" RenderTransformOrigin="0.657,0.889"/>
         <Label x:Name="LbCustomer"  Foreground="Black" Content="Customer:" HorizontalAlignment="Left" Margin="36,33,0,0" VerticalAlignment="Top" Height="32" Width="85" FontWeight="Bold" FontSize="14"/>

@@ -84,7 +84,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="#EEEEEE">
+    <Grid Background="WhiteSmoke">
 
         <Image Source="/Images/purchase2.png" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="35" Margin="10,34,0,0" RenderTransformOrigin="0.657,0.889"/>
         <Label x:Name="LbPurchase"  Foreground="Black" Content="Purchase:" HorizontalAlignment="Left" Margin="36,33,0,0" VerticalAlignment="Top" Height="32" Width="80" FontWeight="Bold" FontSize="16"/>
@@ -124,8 +124,8 @@
         <Label x:Name="LbEmployee" Foreground="Black" Content="Employee:" HorizontalAlignment="Left" Margin="706,151,0,0" VerticalAlignment="Top" Height="32" Width="88" FontWeight="Bold" FontSize="16"/>
         <ComboBox x:Name="CBNomeDoCliente" Text="{Binding Agendamento.Cliente}" HorizontalAlignment="Left" Margin="800,155,0,0" VerticalAlignment="Top" Width="258" Height="28" Background="White"/>
 
-        <Button Name="BtnToys" Style="{StaticResource btnBlue}" Content="Toys" Background="#FF6BD471" HorizontalAlignment="Left" Margin="828,259,0,0" VerticalAlignment="Top" Width="133" Click="BtnProdutos_Click" FontWeight="Bold" Height="29"/>
-        <Button Name="BtnCustomer" Style="{StaticResource btnBlue}" Content="Customer" Background="#FF74CCD7" HorizontalAlignment="Left" Margin="828,215,0,0" VerticalAlignment="Top" Width="132" Click="BtnProdutos_Click" FontWeight="Bold" Height="29"/>
+        <Button Name="BtnToys" Style="{StaticResource btnBlue}" Content="Toys" Background="#FF6BD471" HorizontalAlignment="Left" Margin="828,259,0,0" VerticalAlignment="Top" Width="133" FontWeight="Bold" Height="31" Click="BtnToys_Click"/>
+        <Button Name="BtnCustomer" Style="{StaticResource btnBlue}" Content="Customer" Background="#FF74CCD7" HorizontalAlignment="Left" Margin="828,215,0,0" VerticalAlignment="Top" Width="133" FontWeight="Bold" Height="31" Click="BtnCustomer_Click"/>
 
         <Label x:Name="LbTotal" Foreground="Black" Content="Total:" HorizontalAlignment="Left" Margin="706,305,0,0" VerticalAlignment="Top" Height="30" Width="88" FontWeight="Bold" FontSize="16"/>
         <wpfx:MaskedTextBox x:Name="MtxbTotal" Text="{Binding Customer.Phone}" Style="{StaticResource Textbox1}" Width="258" Height="28" HorizontalAlignment="Left" Margin="800,310,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="MtxbPhone_PreviewMouseLeftButtonUp"/>

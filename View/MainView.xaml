@@ -5,10 +5,50 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ToyStore.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="1053"
+      d:DesignHeight="529" d:DesignWidth="1080"
       Title="MainView">
 
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/fundo.jpg"/>
+        </Grid.Background>
+
+        <Image Source="/Images/et.png" Margin="932,348,0,-117.2"/>
+        <Image Source="/Images/logo.png" Margin="315,121,315,173.8" />
+        <Image Source="/Images/fundo2.png" Margin="582,267,423,195.8" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="88.344"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Border BorderBrush="#FFE20025">
+            <Image Source="/Images/e.PNG" Margin="604,262,434,190.8" RenderTransformOrigin="0.5,0.5" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="6.673"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+                <Image.Effect>
+                    <BlurEffect Radius="1"/>
+                </Image.Effect>
+            </Image>
+        </Border>
+        <Image Source="/Images/fundo2.png" Margin="637,266,414,229.8" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="88.912"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </Page>
